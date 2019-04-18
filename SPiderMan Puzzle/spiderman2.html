@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> Spiderman Puzzle </title>
+		<style> 
+			a
+			{
+			color:black;
+			text-decoration:none;
+			cursor:default; <!-- or pointer or wait-->
+			}
+			body
+			{
+			background-color: black;
+			}
+			td
+			{
+			border: 5px solid none;
+			border-collapse:collapse;
+			}
+			table
+			{
+			border: 5px dashed red;
+			margin:auto;
+			border-collapse:collapse;
+			}
+			span
+			{
+			font-size:24pt;
+			font-color:red;
+			}
+			div
+			{
+			text-align:center;
+			}
+			img
+			{
+			width:200px;
+			}
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+		kill1=document.getElementById("kill");
+		shuf=0;
+		select=0;
+		win=0;
+		ctr=1;
+		cl=0;
+		pic=0;
+		im=0;
+		ctr2=0;
+		swap=0;
+		start=0;
+		}
+		function replace(num)
+		{
+			if(pic>=1)
+			{
+				swap++;
+				if(select==0)
+				{
+				tile1=document.getElementById(num);
+				tile1.style.border = "thick solid #00ff00";
+				im1=tile1.getAttribute("src");
+				}
+				if(select==1)
+				{
+				tile2=document.getElementById(num);
+				im2=tile2.getAttribute("src");
+				tile1.style.border = "none";
+				}
+				if(select==1)
+				{
+				tile2.src=im1;
+				tile1.src=im2;
+				select=-1;
+				}
+				select++;
+				wincon=["images/sm1.png","images/sm2.png","images/sm3.png","images/sm4.png","images/sm5.png","images/sm6.png","images/sm7.png","images/sm8.png",
+				"images/sm9.png","images/sm10.png","images/sm11.png","images/sm12.png","images/sm13.png","images/sm14.png","images/sm15.png","images/sm16.png"];
+				pic++;
+				ctr=0;
+				ctr2=-1;
+				win=0;
+				cl=0;
+				while(win!=15)
+				{
+					win++;
+					ctr++;
+					ctr2++;
+					magic=document.getElementById(ctr);
+					im=magic.src;
+					if(magic.getAttribute("src")==wincon[ctr2])
+					{
+						cl++;
+					}
+					else
+					{
+						win=15;
+					}
+					if(cl==15)
+					{
+						kill1.innerHTML="YOU WIN IT TOOK YOU " +swap+ " CLICKS";
+						kill1.style.border= "5px dashed yellow";
+						kill1.style.color= "red";
+						pic=0;
+						start=1;
+					}
+				}
+			}
+		}
+		function shuffle()
+		{
+			if(start!=1)
+			{
+				pic=1;
+				shuf=0;
+				test=[];
+				check=[];
+				while(shuf!=16)
+				{
+					ctr=0;
+					ran=getRandomInteger(1,16)
+						while(ctr!=16)
+						{
+							while(test[ctr]==ran)
+							{
+								if(test[ctr]==ran)
+								{
+									ctr=0;
+								}
+							ran=getRandomInteger(1,16);
+							}
+							ctr++;
+						}
+					test.push(ran);
+					ctr=0;
+					msg=getRandomInteger(1,16);
+					while(ctr!=16)
+						{
+							while(check[ctr]==msg)
+							{
+								if(check[ctr]==msg)
+									{
+									ctr=0;
+									}
+							msg=getRandomInteger(1,16);
+							}
+							ctr++;
+						}
+					check.push(msg);
+					change=document.getElementById(msg);
+					change.src ="images/sm"+ran+".png";
+					shuf++;
+				}
+			}
+		}
+		</script> 
+		
+	</head>
+	<body onload= "initialize();">
+	<div>
+	<span id="kill"></span>
+	</div>
+		<table>
+			<tr>
+				<td><img onclick="replace(1);"id="1"src = "images/sm1.png" /></td>
+				<td><img onclick="replace(2);"id="2"src = "images/sm2.png" /></td>
+				<td><img onclick="replace(3);"id="3"src = "images/sm3.png" /></td>
+				<td><img onclick="replace(4);"id="4"src = "images/sm4.png" /></td>
+			</tr>
+			<tr>
+				<td><img onclick="replace(5);"id="5"src = "images/sm5.png" /></td>
+				<td><img onclick="replace(6);"id="6"src = "images/sm6.png" /></td>
+				<td><img onclick="replace(7);"id="7"src = "images/sm7.png" /></td>
+				<td><img onclick="replace(8);"id="8"src = "images/sm8.png" /></td>
+			</tr>
+			<tr>
+				<td><img onclick="replace(9);"id="9"src = "images/sm9.png" /></td>
+				<td><img onclick="replace(10);"id="10"src = "images/sm10.png" /></td>
+				<td><img onclick="replace(11);"id="11"src = "images/sm11.png" /></td>
+				<td><img onclick="replace(12);"id="12"src = "images/sm12.png" /></td>
+			</tr>
+			<tr>
+				<td><img onclick="replace(13);"id="13"src = "images/sm13.png" /></td>
+				<td><img onclick="replace(14);"id="14"src = "images/sm14.png" /></td>
+				<td><img onclick="replace(15);"id="15"src = "images/sm15.png" /></td>
+				<td><img onclick="replace(16);"id="16"src = "images/sm16.png" /></td>
+			</tr>
+		</table>
+		<div>
+		<button onclick ="shuffle();">Click to Shuffle</button>
+		<button>
+		<a href="spiderman2.html">
+		Wanna Play Again?
+		</a>
+		</button>
+		</div>
+	</body>
+
+	
+	
+</html>

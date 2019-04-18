@@ -1,0 +1,50 @@
+foyer,main staircase
+foyer,short corridor
+foyer,living room
+foyer,piano room
+main staircase,foyer
+main staircase,upstairs hallway
+short corridor,foyer
+short corridor,kitchen
+short corridor,basement staircase
+living room,foyer
+living room,solarium
+piano room,foyer
+piano room,garage
+piano room,dining room
+upstairs hallway,main staircase
+upstairs hallway,upstairs bathroom
+upstairs hallway,master bedroom
+upstairs hallway,attic stairs
+upstairs hallway,middle bedroom
+upstairs hallway,small bedroom
+kitchen,short corridor
+kitchen,pantry
+kitchen,dining room
+kitchen,servant quarters
+basement staircase,basement
+basement staircase,short corridor
+solarium,living room
+garage,piano room
+garage,workshop
+dining room,piano room
+dining room,kitchen
+upstairs bathroom,upstairs hallway
+master bedroom,master bathroom
+master bedroom,upstairs hallway
+master bedroom,master closet
+attic stairs,attic
+attic stairs,upstairs hallway
+middle bedroom,upstairs hallway
+small bedroom,upstairs hallway
+pantry,kitchen
+servant quarters,kitchen
+servant quarters,laundry room
+basement,torture room
+basement,basement staircase
+workshop,garage
+master bathroom,master bedroom
+master closet,master bedroom
+attic,attic stairs
+laundry room, servant quarters
+torture room,basement

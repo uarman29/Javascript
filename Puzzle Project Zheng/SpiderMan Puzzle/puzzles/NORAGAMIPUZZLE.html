@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<!-- Zheng Lu -->
+
+<html>
+	<head>
+	
+		<link rel = "stylesheet" href = "css/TEST.css" />
+		<title>Puzzle</title>
+		
+		<script src = "utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				HEADERTEXT = "Noragami Puzzle", IMGFOLDER = "NORAGAMI", COMPLETEIMG = "noragami.png", IMGTYPE = ".jpg";		
+				COMPLETEIMGVERTICALSIZE = 600, COMPLETEIMGHORIZONTALSIZE = 1024,
+				MAXPIECES = 63, COLUMNS = 9,
+				
+				UPPER = MAXPIECES, LOWER = 1, ROWS = MAXPIECES/COLUMNS;
+				
+
+				
+				NONE = 0;
+			
+				
+				shuffleReset();
+				
+				pieceSelectElement1 = null;
+				pieceSelectElement2 = null;
+				pieceSelectSrc1 = null;
+				pieceSelectSrc2 = null;
+
+				addNewRow();
+			}
+			
+			function shuffleReset()
+			{
+				headerElement = document.getElementById("header");
+				headerElement.innerHTML = HEADERTEXT;
+				
+				completePicElement = document.getElementById("completePic");
+				completePicElement.style.width = "1px";
+				completePicElement.style.height = "1px";
+				
+				puzzleTableElement = document.getElementById("puzzleTable");
+				puzzleTableElement.style.visibility = "visible";
+				puzzleTableElement.style.position = "initial";
+				
+				clickNum = 0;
+				pieceNum = 0;
+				
+				booleanArray = [null];
+				winArray = [null];
+				
+				isShuffled = false;
+				isWin = false;
+			}
+			
+			function addNewRow()
+			{
+				do
+				{
+					if (pieceNum % COLUMNS == 0)
+					{
+						newRow = puzzleTableElement.insertRow();
+					}
+					
+					pieceNum ++;
+					
+					addCellToRow(newRow, pieceNum);
+					
+				} while (pieceNum < MAXPIECES);
+			}
+			
+			function addCellToRow(newRow, pieceNum)
+			{
+				var newCell = newRow.insertCell();
+				
+				var newImage = document.createElement("IMG");
+				newCell.appendChild(newImage);
+				
+				newImage.id = "piece" + pieceNum;
+				
+				var piecesElement = "piece" + pieceNum + "Element";
+				piecesElement = document.getElementById(newImage.id);
+				
+				var imgWidth = COMPLETEIMGHORIZONTALSIZE / COLUMNS;
+				var imgLength = COMPLETEIMGVERTICALSIZE / ROWS;
+				piecesElement.style.width = imgWidth + "px";
+				piecesElement.style.height = imgLength + "px";
+				piecesElement.onclick = function() {runGame(pieceNum)};
+
+				piecesElement.src = "css/imgs/" + IMGFOLDER + "/pic" + pieceNum + IMGTYPE;
+			}
+			
+			function display(imgSrcNum, pieceNumb)
+			{
+				if (imgSrcNum > NONE)
+				{
+					var whichPiece = "piece" + pieceNumb;
+					document.getElementById(whichPiece).src = "css/imgs/" + IMGFOLDER + "/pic" + imgSrcNum + IMGTYPE;
+					winArray.push("css/imgs/" + IMGFOLDER + "/pic" + imgSrcNum + IMGTYPE);
+				}
+				
+				if (isWin)
+				{
+					var swapNum = clickNum / 2;
+					
+					headerElement.innerHTML = "You Completed the Puzzle With " + swapNum + " Swaps!";
+					puzzleTableElement.style.visibility = "hidden";
+					puzzleTableElement.style.position = "fixed";
+
+					completePicElement.src = "css/imgs/" + IMGFOLDER + "/" + COMPLETEIMG;
+					completePicElement.style.width = COMPLETEIMGHORIZONTALSIZE + "px";
+					completePicElement.style.height = COMPLETEIMGVERTICALSIZE + "px";	
+				}
+
+			}
+			
+			function runGame(pieceSelect)
+			{
+				if (isShuffled && !isWin)
+				{ 				
+					clickNum ++;
+					
+					var whichPiece = "piece" + pieceSelect;
+					
+					if (clickNum % 2 == 1)
+					{
+						whichPiece1 = pieceSelect;
+						pieceSelectElement1 = document.getElementById(whichPiece);
+						pieceSelectElement1.style.border = "solid #00ff00 3px";
+						pieceSelectElement1.style.margin = "-6px -4px";
+						pieceSelectSrc1 = pieceSelectElement1.getAttribute("src");
+						
+					}
+					else
+					{
+						whichPiece2 = pieceSelect;
+						pieceSelectElement2 = document.getElementById(whichPiece);
+						pieceSelectSrc2 = pieceSelectElement2.getAttribute("src");
+						
+						pieceSelectElement1.style.border = "initial";
+						pieceSelectElement1.style.margin = "-3px -1px";
+						
+						pieceSelectElement2.src = pieceSelectSrc1;
+						pieceSelectElement1.src = pieceSelectSrc2;
+						
+						winArray[whichPiece1] = pieceSelectSrc2;
+						winArray[whichPiece2] = pieceSelectSrc1;
+						
+						win();
+					}
+				}
+			}
+			
+			function getRandomSrc()
+			{			
+				do
+				{
+					var imgSrcNum = getRandomInteger(LOWER,UPPER);
+					
+					if(booleanArray[imgSrcNum])
+						imgSrcNum = NONE;
+
+				} while(imgSrcNum == NONE);
+				
+				booleanArray[imgSrcNum] = true;
+				return imgSrcNum;
+			}
+			
+			function shuffle()
+			{
+				shuffleReset();
+				var pieceNumb = 0;
+				do
+				{
+					pieceNumb ++;
+					
+					display(getRandomSrc(), pieceNumb);
+					
+				} while (pieceNumb < MAXPIECES);
+
+				isShuffled = true;
+			}
+			
+			function win()
+			{
+				var pieceNumb = 0;
+				var result = 1;
+				do
+				{
+					pieceNumb ++;
+					
+					if (winArray[pieceNumb] == "css/imgs/" + IMGFOLDER + "/pic" + pieceNumb + IMGTYPE)
+						result = NONE;
+					else
+						result = 1;
+				} while (result == NONE && pieceNumb < MAXPIECES);	
+				
+				if(pieceNumb == MAXPIECES)
+				{
+					isWin = true;
+					display(NONE);
+				}
+			}
+		</script>	
+	</head>
+	<body onload = "initialize()">
+		<div id = "header"></div>
+		<img id = "completePic" />
+		<br />
+		<table id = "puzzleTable"></table>
+		<button onclick = "shuffle();"> Shuffle! </button>
+	</body>
+</html>

@@ -1,0 +1,310 @@
+<!-- ARMAN UDDIN -->
+<!-- CSS IS TOO HARD-->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rock Paper Scissor</title>
+		<link rel = "stylesheet" href = "rps.css" />
+		<style></style>
+        
+        <script>
+			function initialize()
+			{
+				//Constants
+				NONE=0,PAPER = 1, SCISSOR = 2, ROCK = 3;
+				DRAW = 0, PLAYER = 1, COMPUTER = 2, WRONG = 4, OVER=5, comOver=6;
+				
+				messageOutput = document.getElementById("msgspn");
+				computerImage = document.getElementById("compimg");
+				roundResultOutput = document.getElementById("roundResultdiv");
+				headElement = document.getElementById("heading");
+				rocknumElement=document.getElementById("rocknum");
+				scissornumElement=document.getElementById("scissornum");
+				papernumElement=document.getElementById("papernum");
+				comrockElement = document.getElementById("comrock");
+				comscissorElement = document.getElementById("comscissor");
+				compaperElement = document.getElementById("compaper");
+				comrockn = 5;
+				compapern = 5;
+				comscissorn= 5;
+				rockn = 5;
+				scissorn = 5;
+				papern = 5;
+	
+				playerSelection = -1;
+				computerSelection = -1;
+
+
+				roundResult = PLAYER;
+				headResult = NONE;
+			}
+		
+			function runGame(selection)
+			{
+				if(rockn<=0 && papern<=0 && scissorn<=0)
+				{
+					roundResult = COMPUTER;
+				}
+				else
+				{
+					if(rockn<=0 && selection==3||scissorn<=0 && selection==2|| papern<=0 && selection ==1)
+					{
+						playerSelection=WRONG;
+					}
+					else
+					{
+						playerSelection = selection;
+						makeComputerSelection();
+					}
+				}
+				
+				determineWinner();
+				gameWinner();
+				displayResult();
+			}
+			
+			function makeComputerSelection()
+			{
+					if(comrockn<=0 && comscissorn<=0)
+					{
+						computerSelection = PAPER;
+					}
+					else
+					{
+						if(compapern<=0 && comscissorn<=0)
+						{
+							computerSelection = ROCK;
+						}
+						else
+						{
+							if(compapern<=0 && comrockn<=0)
+							{
+								computerSelection = SCISSOR;
+							}
+							else
+							{
+								if(compapern<=0)
+								{
+									computerSelection = parseInt(Math.random() * 2) + 2;
+								}
+								else
+								{
+									if(comrockn<=0)
+									{
+										computerSelection = parseInt(Math.random() * 2) + 1;
+									}
+									else
+									{
+										if(comscissorn<=0)
+										{
+											computerSelection = parseInt(Math.random() * 2)*2 + 1;
+										}
+										else
+										{
+											computerSelection = parseInt(Math.random() * 3) + 1;
+										}
+									}
+								}
+							}
+						}
+					}
+				
+			}
+			
+			
+			function determineWinner()
+			{
+				if (playerSelection ==4)
+				{
+					roundResult = WRONG;
+					
+				}
+				else
+				{
+					if(playerSelection==OVER)
+					{
+						roundResult = COMPUTER;
+					}
+					else
+					{
+						if(computerSelection==0)
+						{
+							roundResult = PLAYER;
+						}
+						else
+						{
+						
+							if (computerSelection == PAPER && playerSelection == ROCK && rockn>0)
+							{
+								roundResult = COMPUTER;
+								comrockn +=1;
+								rockn -= 1;
+							}
+							else
+							{
+								if (computerSelection == ROCK && playerSelection == PAPER && rockn <10)
+								{
+									roundResult = PLAYER;
+									rockn += 1;
+									comrockn -=1;
+								}
+								else
+								{
+									if (computerSelection == SCISSOR && playerSelection == PAPER && papern>0 )
+									{
+										roundResult = COMPUTER;
+										papern -=1;
+										compapern +=1;
+									}
+									else
+									{
+										if (computerSelection == ROCK && playerSelection == SCISSOR && scissorn>0)
+										{
+											roundResult = COMPUTER;
+											scissorn -=1;
+											comscissorn +=1;
+										}
+										else
+										{
+											if (computerSelection == PAPER && playerSelection == SCISSOR && papern<10)
+											{
+												roundResult = PLAYER;
+												papern += 1;
+												compapern -=1;
+											}
+											else
+											{
+												if (computerSelection == SCISSOR && playerSelection == ROCK && scissorn<10)
+												{
+													roundResult = PLAYER;
+													scissorn += 1;
+													comscissorn -=1;
+												}
+												else
+												{
+													roundResult = DRAW;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			function gameWinner()
+			{
+				if(rockn<=0 && papern<=0 && scissorn<=0)
+				{
+					headResult = OVER;
+					roundResult=COMPUTER;
+					
+				}
+				else 
+				{
+					if (comrockn<=0 && comscissorn<=0 && compapern<=0)
+					{
+					headResult=comOver;
+					roundResult = PLAYER;
+					}
+				}
+			
+
+			}
+			function displayResult()
+			{
+				
+				if(headResult == OVER)
+				{
+					headElement.innerHTML = "GAME OVER YOU LOSE";
+				
+				}
+				if (headResult==comOver)
+				{
+					headElement.innerHTML= "GAME OVER YOU WIN";
+		
+				}
+				messageOutput.innerHTML = "Your Opponent selected ";
+				if (computerSelection == PAPER)
+				{
+					computerImage.src = "images/paper.png";
+				}
+
+				if (computerSelection == SCISSOR)
+				{
+					computerImage.src = "images/scissor.png";
+				}
+
+				if (computerSelection == ROCK)
+				{
+					computerImage.src = "images/rock.png";
+				}
+
+		
+				if (roundResult == PLAYER)
+				{
+					roundResultOutput.innerHTML = "You are the winner.";
+					
+				}
+				
+				if (roundResult == COMPUTER)
+				{
+					roundResultOutput.innerHTML = "Your Opponent is the winner.";
+				}
+					
+				if (roundResult == DRAW)
+				{
+					roundResultOutput.innerHTML = "It is a draw.";
+				}
+				if (roundResult == WRONG)
+				{
+					roundResultOutput.innerHTML = "YOU ARE OUT OF THIS WEAPON";
+				}
+				rocknumElement.innerHTML=rockn;
+				scissornumElement.innerHTML=scissorn;
+				papernumElement.innerHTML=papern;
+				comrockElement.innerHTML= comrockn;
+				comscissorElement.innerHTML= comscissorn;
+				compaperElement.innerHTML= compapern;
+			}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+		<h6><span id = "heading">Rock Paper Scissor!</span></h6>
+		<h4>
+			<span>Your Weapons</span><br /><br />
+			<img onclick = "runGame(ROCK);" src = "images/rock.png" /><br />
+			<div id= "rocknum">5</div>
+			<img onclick = "runGame(SCISSOR);" src = "images/scissor.png" /><br />
+			<div id= "scissornum">5</div>
+			<img onclick = "runGame(PAPER);" src = "images/paper.png" /><br />
+			<div id= "papernum">5</div>
+		</h4>
+		<h3>
+			<span id = "msgspn">Your Opponent</span><br /><br />
+			<img id = "compimg" src = "" />
+			
+		</h3>
+		<h2>
+		<img  src = "images/rock.png" />
+		<span id = "comrock">5</span>
+		<img src = "images/scissor.png" />
+		<span id = "comscissor">5</span>
+		<img src = "images/paper.png" />
+		<span id = "compaper" >5</span>
+		</h2>
+		<h5>
+			<img src = "images/ref.png" />
+		</h5>
+		<div id = "roundResultdiv"></div>
+		
+		<h2>
+		<div>
+		
+		</div>
+		</h2>
+	</body>
+</html>

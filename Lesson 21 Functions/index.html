@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+<html>
+	<head>
+		<title>Rat Race</title>
+		
+		<link rel = "stylesheet" href = "ratrace.css" />
+		
+		<style></style>
+		<script src="Utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				mickeyOut = document.getElementById("mickeyspan");
+				itchyOut = document.getElementById("itchyspan");
+				jerryOut = document.getElementById("jerryspan");
+				lapOut = document.getElementById("laps");
+				winnerElement= document.getElementById("winner");
+				
+				mickey = 0;
+				itchy = 0;
+				jerry = 0;
+				cn=0;
+			}
+
+			function runlap()
+			{
+				cn +=1;
+				
+				if(cn<=10)
+				{
+					jerry += getRandomInteger(1,10);
+					itchy += getRandomInteger(1,10);
+					mickey += getRandomInteger(1,10);
+				}
+				else 
+					{
+					cn=10;
+					}
+				showRats();
+			}
+			function showRats()
+			{
+			
+				if(mickey>jerry && mickey>itchy&& cn>=10 )
+					{
+					winnerElement.innerHTML= "MICKEY WINS";
+					}
+				else
+				{
+					if(jerry>mickey && jerry>itchy&& cn>=10 )
+					{
+					winnerElement.innerHTML= "JERRY WINS";
+				
+					}
+					else
+					{
+						if(itchy>mickey && itchy>jerry&& cn>=10 )
+						{
+						winnerElement.innerHTML= "ITCHY WINS";
+						}
+						else
+						{
+							if(cn>=10 && itchy==jerry || cn>=10 && itchy==mickey || cn>=10 && mickey==jerry || cn>=10 && mickey==jerry&&jerry==itchy)
+							{
+							winnerElement.innerHTML="ITS A TIE";
+							}
+						}
+					}
+				}	
+			
+			
+			mickeyOut.innerHTML= mickey;
+			jerryOut.innerHTML = jerry;
+			itchyOut.innerHTML = itchy;
+			lapOut.innerHTML=cn;
+			}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+		<p id = "laps">
+			Gentlemen, start your mouses.
+		</p>
+		<h1>
+			<img src = "images/mickey.png" /><br />
+			Mickey: <span id = "mickeyspan">0</span>
+		</h1>
+		<h2>
+			<img src = "images/itchy.png" /><br />
+			Itchy: <span id = "itchyspan">0</span>
+		</h2>
+		<h3>
+			<img src = "images/jerry.png" /><br />
+			Jerry: <span id = "jerryspan">0</span>
+		</h3>
+		
+		<h3>
+			<button onclick = "runlap();">Run!</button>
+		</h3>
+		<h3 id ="winner">
+		Who won?
+		</h3>
+	</body>
+</html>

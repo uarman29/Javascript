@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			mazeNewElement=document.getElementById("mazeNew");
+			linecontainerElement=document.getElementById("linecontainer");
+			theMaze=[];
+			ctr=0;
+		}
+		function placeSection(imgsrc)
+		{
+			var newSection = new MazeSection(imgsrc);
+			theMaze.push(newSection);
+			ctr++;
+			newImg=document.createElement("img");
+			newImg.src=imgsrc;
+			newImg.setAttribute("onclick","removeSection(this)");
+			mazeNewElement.appendChild(newImg);
+		}
+		function removeSection(imgObj)
+		{
+			//mazeNewElement.removeChild(imgObj);
+			imgObj.parentElement.removeChild(imgObj);
+			theMaze.splice(imgObj.MazeIdx,1);
+			alert(theMaze);
+			
+		}
+		function MazeSection(mimg)
+		{
+			this.sectionImage=mimg;
+			this.MazeIdx=ctr;
+		}
+		function lineNext()
+		{
+			newDiv=document.createElement("div");
+			mazeNewElement=newDiv;
+			linecontainerElement.appendChild(newDiv);
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<div id="imgcontainer">
+	<img onclick="placeSection(this.src);"src="images/bottomdeadend.png"/>
+	<img onclick="placeSection(this.src);"src="images/cross.png"/>
+	<img onclick="placeSection(this.src);"src="images/empty.png"/>
+	<img onclick="placeSection(this.src);"src="images/horizontal.png"/>
+	<img onclick="placeSection(this.src);"src="images/lbottomleft.png"/>
+	<img onclick="placeSection(this.src);"src="images/lbottomright.png"/>
+	<img onclick="placeSection(this.src);"src="images/leftdeadend.png"/>
+	<img onclick="placeSection(this.src);"src="images/ltopleft.png"/>
+	<img onclick="placeSection(this.src);"src="images/ltopright.png"/>
+	<img onclick="placeSection(this.src);"src="images/rightdeadend.png"/>
+	<img onclick="placeSection(this.src);"src="images/tdown.png"/>
+	<img onclick="placeSection(this.src);"src="images/tleft.png"/>
+	<img onclick="placeSection(this.src);"src="images/topdeadend.png"/>
+	<img onclick="placeSection(this.src);"src="images/tright.png"/>
+	<img onclick="placeSection(this.src);"src="images/tup.png"/>
+	<img onclick="placeSection(this.src);"src="images/vertical.png"/>
+	<button onclick="lineNext();">New Line</button>
+	</div>
+	<hr/>
+	<div id="linecontainer">
+	<div id="mazeNew"></div>
+	<div>
+	</body>
+
+	
+	
+</html>

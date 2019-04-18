@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> RANDOM FACTS </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		color:white;
+		text-align:center;
+		}
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+		ranridElement=document.getElementById("rid");
+		anElement=document.getElementById("an");
+		riddles=["What is greater than God,more evil than the devil,the poor have it,the rich need it,and if you eat it, you'll die?","Who makes it, has no need of it.Who buys it, has no use for it. Who uses it can neither see nor feel it. What is it?","Which creature walks on four legs in the morning, two legs in the afternoon, and three legs in the evening?","What can travel around the world while staying in a corner?","If you have me, you want to share me. If you share me, you haven't got me. What am I?","Feed me and I live, yet give me a drink and I die.","What is as light as a feather, but even the world's strongest man couldn't hold it for more than a minute?","What is always coming but never arrives?","What occurs once in every minute, twice in every moment, yet never in a thousand years?","If there are 3 apples and you take away 2, how many do you have?","The more of them you take, the more you leave behind. What are they?","What is that you will break every time you name it?","What's full of holes but still holds water?","There's a one story house that's all blue inside. The floor was blue, the lamps were blue,the walls were blue,everything was blue. So what color were the interior stairs?","What goes up and never goes down?","You are in a room with 3 monkeys. One has a banana, one has a stick, one has nothing. Which primate in the room is the smartest?","What's colorless and weightless, but if you put it into a barrel, the barrel would become lighter?","What has a foot on each side and one in the middle?","Forward I am heavy, but backward I am not. What am I?","What building has a thousand stories"];
+		answers=["Nothing","A coffin","Man. He crawls on all fours as a baby, then walks on two feet as an adult, and then walks with a cane as an old man.","A stamp","A secret","FIRE","His Breath","Tomorrow.","The letter m.","If you take 2 apples, then you have of course 2.","Footsteps","Silence","A sponge","Its a one story house so there are no stairs","Your age","You are the smartest since you are a primate but you knew that right?","A hole","A yardstick","A ton","A libraray"];
+		al=answers.length-1;
+		rl=riddles.length-1;
+		ctr=0;
+		ctr2=0;
+		ctr3=0;
+		ctr4=0;
+		}
+		function getriddle()
+		{
+			if(ctr4==0)
+			{
+				ctr4=1;
+				if(rl<=-1)
+				{
+				ranridElement.innerHTML="WE ARE OUT OF RIDDLES";
+				rl--;
+				return;
+				}
+				if(ctr>=1)
+				{
+					answers.splice(ran,1);
+					al=answers.length-1;
+				}
+				anElement.innerHTML="ANSWER";
+				ran=getRandomInteger(0,rl)
+				ranridElement.innerHTML=riddles[ran];
+				riddles.splice(ran,1);
+				rl=riddles.length-1;
+				ctr++;
+				ctr2++;
+				ctr3=0;
+				setTimeout(timestop,500);
+			}
+		}
+		function getanswer()
+		{
+			if(rl<=-2)
+			{
+			anElement.innerHTML="IDK";
+			return;
+			}
+			if(ctr3==0)
+			{
+				anElement.innerHTML=answers[ran];
+				answers.splice(ran,1);
+				al=answers.length-1;
+				ctr=0;
+			}
+			ctr3++;
+		
+		}
+		function timestop()
+		{
+			ctr4=0;
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<h1 id="rid">
+	RIDDLES
+	</h1>
+	<h1 id="an">
+	ANSWERS
+	</h1>
+	<button onclick="getriddle();">Random Riddle</button>
+	<button onclick="getanswer();">Riddle Answer</button>
+	<a href="mainpg.html"><button>Return to main page?</button></a>
+	</body>
+
+	
+	
+</html>

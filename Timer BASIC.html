@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			numcounterElement=document.getElementById("numcounter");
+			ctr=0;
+		}
+		function startTime()
+		{
+			interval=setInterval("updateCounter()",1000);
+		}
+		function updateCounter()
+		{
+			ctr++;
+			display();
+		}
+		function display()
+		{
+			numcounterElement.innerHTML=ctr;
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<div id="numcounter">0</div>
+	<button onclick="startTime();">START</button>
+	<button onclick="clearInterval(interval)">STOP</button>
+	</body>
+
+	
+	
+</html>

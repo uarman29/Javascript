@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		div{
+		text-align:center;
+		font-size:36pt;
+		font-family:cosmic sands;
+		}
+		button 
+		{
+		height:100px;
+		width:100px;
+		background-color:red;
+		border-radius:50px;
+		}
+	
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+			sound=document.getElementById("music");
+		}
+		function commentpump(x)
+		{
+			x=event.keyCode;
+			alert(x);
+			if(x==65)
+			{
+			sound.play();
+			}
+			
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload="initialize();"onkeydown="commentpump();">
+	<div>
+		<button>HI</button>
+		<audio id="music"src="drum.mp3"></audio>
+	</body>
+
+	
+	
+</html>

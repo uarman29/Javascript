@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			foodInput=document.getElementById("foodin");
+			foodOutput=document.getElementById("foodgrp");
+		}
+		function sendRequest()
+		{
+			var request= new XMLHttpRequest();
+			request.onreadystatechange=
+				function()
+				{
+					if(request.readyState==4)
+					{							
+						foodOutput.innerHTML=request.responseText;
+					}
+				}
+			//ready state 0-no request,1-request prepared,2-sent,3-processing,4-returned
+			var url="foodgroup.php?food="+foodInput.value;
+			request.open("GET",url,true);
+			request.send(null);
+		}
+		function reportFood()
+		{
+			
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+		<br/>
+			Fruit<input onclick="reportFood();"type="radio" value="fruit"name="radiogroup"/>
+			Dairy<input onclick="reportFood();"type="radio" value="dairy"name="radiogroup"/>
+			Protein<input onclick="reportFood();"type="radio" value="protein"name="radiogroup"/>
+		<br/>
+		Food <input type="text" id="foodin"/>
+		<button onclick="sendRequest();">Check Food Group</button>
+		<div id="foodgrp"></div>
+	</body>
+
+	
+	
+</html>

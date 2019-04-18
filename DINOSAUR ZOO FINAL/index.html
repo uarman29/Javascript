@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		body
+		{
+			background-color:tan;
+		}
+		h2
+		{
+			font-size:20px;
+		}
+		#intercontainer
+		{
+		position:absolute;
+		height:90%;
+		width:20%;
+		}
+		#infocontainer
+		{
+			border:solid;
+			position:absolute:
+			top:0px;
+			text-align:center;
+			width:100%;
+			background-color:tan;
+			opacity:.7;
+			max-height:35%;
+			height:35%;
+			overflow:auto;
+		}
+		
+		#zoohist
+		{
+			position:absolute:
+			top:80%;
+			border:solid;
+			text-align:center;
+			width:100%;
+			background-color:tan;
+			opacity:.7;
+			height:32%;
+			max-height:32%;
+			overflow:auto;
+		}
+		
+		#controlpanel
+		{
+			position:absolute:
+			top:50%;
+			border:solid;
+			text-align:center;
+			width:100%;
+			background-color:tan;
+			opacity:.7;
+			max-height:32%;
+			height:32%;
+			overflow:auto;
+		}
+		
+		#mapmage
+		{
+			position:absolute;
+			top:0px;
+			left:25%;
+			height:100%;
+			width:70%;
+		}
+		#rampage
+		{
+			position:absolute;
+			top:0px;
+			left:25%;
+			height:100%;
+			width:70%;
+			z-index:-1;
+		}
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+			ALIVE = 0;
+			DEAD = 1;
+		
+			dinoNameRay=["Utahraptor","Stegosaurus","Velociraptors","Adeopapposaurus","Tyrannosaurus Rex","Spinosaurus","Ankylosaurus","Brachiosaurus","Parasaurolophus","Triceratops","Protarchaeopteryx","Iguanodon","Oviraptor","Cryolophosaurus","Carnotaurus"];
+			dinoFoodRay=["Carnivore","Herbivore","Carnivore","Herbivore","Carnivore","Carnivore","Herbivore","Herbivore","Herbivore","Herbivore","Carnivore","Herbivore","Omnivore","Carnivore","Carnivore"];
+			dinoHistoryRay=["Utahraptor was the largest, most dangerous raptor dinosaur that ever lived, making close relatives like Deinonychus and Velociraptor seem positively shrimpy by comparison,adults measured about 25 feet from head to tail and weighed in the neighborhood of 1,000 to 2,000 pounds, compared to 200 pounds for a more typical raptor.Perhaps the most unusual thing about Utahraptor, aside from its size, is when this dinosaur lived: about 125 million years ago, during the early Cretaceous period.As a large, feathered, actively predatory theropod, Utahraptor was almost certainly warm-blooded, which would have been bad news for its presumably cold-blooded, plant-munching prey.","Stegosaurus was a large, plant-eating dinosaur that lived during the late Jurassic Period, about 150.8 million to 155.7 million years ago, primarily in western North America. It was about the size of a bus and carried around two rows of bony plates along its back that made it appear even bigger.Stegosaurus has a reputation for having a small brain and one of the lowest-brain-to-body ratios among dinosaurs.Stegosaurus was the largest and most well-known member of the Stegosauridae family of armored dinosaurs. The largest species was Stegosaurus armatus, a behemoth that grew up to about 30 feet (9 meters) long. Though it is uncertain what purpose the plates served, the blood vessels within the plates suggest temperature regulation (heat dissipation) was likely one function. ","Velociraptor roamed the Earth about 85.8 million to 70.6 million years ago during the end of the Cretaceous Period.A member of the Dromaeosauridae family of small- to medium-sized birdlike dinosaurs, Velociraptor was roughly the size of a small turkey and smaller than others in this family of dinosaurs, which included Deinonychus and Achillobator. Adult Velociraptors grew up to 6.8 feet (2 meters) long, 1.6 feet (0.5 meter) tall at the hip and weighed up to 33 lbs. (15 kilograms).Velociraptor had 13 to 15 teeth in its upper jaw and 14 to 15 teeth in its lower jaw. These teeth were widely spaced and serrated, though more strongly on the back edge than the front.","Adeopapposaurus was believed to be a species of a more famous prosauropod of the early Jurassic period, the African Massospondylus.Scientists believe that Adeopapposaurus was as a quadruped but whenever necessary, it was capable of walking on two legs.As far as its size is concerned, the fossil records show that it grew up to a length of 10 feet and weighed no more than 150 pounds.The distinguishing features of the Adeopapposaurus included a horny beak and a long tail and long neck.","T. rex was one of the largest carnivorous dinosaurs to ever live, coming in at up to 13 feet (4 meters) tall at the hips (the beast's highest point since it did not stand erect) and 40 feet (12.3 m) long.T. rex had strong thighs and a powerful tail, which counterbalanced its large head and allowed it to move quickly. The 2011 study, which also modeled T. rex's muscle distribution and center of mass, suggests the giant could run 10 to 25 mph (17 to 40 km/h), as previous studies had estimated.Its two-fingered forearms were puny, making it unlikely that T. rex could use them to kill or even get a meal to its mouth.T. rex had the strongest bite of any land animal that ever lived, according to a 2012 study in the journal Biology Letters. The dinosaur's bite could exert up to 12, 814 pounds-force (57,000 Newtons), which is roughly equivalent to the force of a medium-size elephant sitting down.","Spinosaurus was the biggest of all the carnivorous dinosaurs, larger than Tyrannosaurus and Giganotosaurus. It lived during part of the Cretaceous period, about 112 million to 97 million years ago, roaming the swamps of North Africa.Two Spinosaurus species have been named based on the regions where they were discovered: Spinosaurus aegyptiacus Egyptian spine lizard) and Spinosaurus maroccanus (Moroccan spine lizard).Spinosaurus means spine lizard an appropriate descriptor, as the dinosaur had very long spines growing on its back to form what is referred to as a sail. The distinctive spines, which grew out of the animal's back vertebrae, were up to 7 feet (2.1 meters) long and were likely connected to one another by skin.","Often compared to an army tank or bus, Ankylosaurus was a heavily armored dinosaur with a large club-like protrusion at the end of its tail. Ankylosaurus means fused lizard in Greek, and it was given that name because bones in its skull and other parts of its body were fused, making the dinosaur extremely rugged. Ankylosaurus lived in the late Cretaceous Period, about 65.5 million to 66.8 million years ago, and roamed the Western United States and Alberta, Canada.The largest Ankylosaurus specimen ever found was 20.5 feet (6.25 meters) long, 5.6 feet (1.7 m) tall at the hips and 4.9 feet (1.5 m) wide","Brachiosaurus was an unusual dinosaur that lived 155.7 million to 150.8 million years ago during the mid- to late Jurassic Period. Specimens have been found primarily in the fossil-rich Morrison Formation in North America, but the dinosaur did not resemble any of the others that roamed the region. Its long neck made it look like a giraffe, and its forelegs were longer than its hind legs. The name Brachiosaurus, in fact, means arm lizard.Brachiosaurus was likely a warm-blooded animal. Some models suggest Brachiosaurus and other sauropods (long-necked dinosaurs) were gigantotherms — animals whose enormous size allowed them to keep high body temperatures. Calculations based on this theory indicate a body temperature of up to 113 degrees Fahrenheit (45 degrees Celsius) for Brachiosaurus. In 2011, however, researchers were able to directly calculate the dinosaur's temperature to be 100.8 F (38.2 C), by measuring the ratios of certain isotopes (atoms of elements with a different number of neutrons) in Brachiosaurus teeth.rachiosaurus may have weighed about 62 tons (56 metric tons), according to 2014 study in the journal PLOS Biology. "," Out of all the hadrosaurs (also known as the duck-billed dinosaurs).Parasaurolophus is one of the most widely recognised thanks to its very distinctive skull crest.They lived about 76 to 73 million years ago - in the late cretaceous period. The Parasaurolphus had an unusual tail that was tall but narrow. It is thought these could have been brightly colored and used to attract mates. Scientists think they may have used their crest to make a trumpeting sound that they used to talk to each other.","Triceratops, with its three horns and bony frill around the back of its head, is one of the most recognizable dinosaurs. Its name is a combination of the Greek syllables tri-, meaning three, keras, meaning horn, and ops, meaning face. The dinosaur roamed North America about 67 million to 65 million years ago, during the end of the Cretaceous Period.Triceratops was a massive animal, comparable in size to an African elephant, according to a 2011 article in the journal Cretaceous Research. It grew up to 30 feet (9 meters) and weighed well over 11,000 lbs. (5,000 kg) — some large specimens weighed nearly 15,750 lbs. (7,150 kg). It had strong limbs to move and support its massive body. The forelimbs, which were shorter than the rear ones, each had three hooves; the rear limbs had four hooves each. A 2012 study in the journal Proceedings of the Royal Society B suggested that Triceratops had an upright posture like an elephant's, rather than a sprawling, elbows-out posture like a lizard's. ","Protarchaeopteryx was a small, feathered, bird-like dinosaur that lived in China. This animal is considered to be more primitive than Archaeopteryx  as it was a little more like the non-avian theropods.  The resulted in its name first ancient-wing or before Archaeopteryx, Like its namesake, the Protarchaeopteryx specimens were found with feather impressions. The best preserved of the newest specimens definitively shows feathers attached to the front leg and tail. Unlike Archaeopteryx, however, Protarchaeopteryx's feathers are symmetrical, indicating that Protarchaeopteryx may not have been able to fly. ","Iguanodon lived in the early Cretaceous Period, around 125 million years ago.The Iguanodon weighed around 3.5 tons and reached around 10 metres (33 feet) in length.Iguanodon had a thin skull and long tail.Scientists estimate the Iguanodon’s maximum speed would have been around 24kph (15mph).","Oviraptor was a small, bird-like, omnivorous dinosaur. It was about 6 to 8 feet long (1.8 to 2.5 m), weighing about 55 to 76 pounds (25 to 35 kg). It was lightly built, fast-moving, long-legged, and bipedal (it walked on two legs). It had a curved, flexible, s-shaped neck, a long tail, short, strong arms, and curved claws on its three-fingered hands and three-toed feet. The claws on its large hands were about 3 inches (8 cm) long. Its fingers were long and grasping.Its strangely-shaped, parrot-like head had a short, toothless beak and extremely powerful jaws, built for crushing action. Oviraptors had a small, stumpy, horn-like crest on its snout, probably used for a mating display; differences in these crests may represent different oviraptor species or the difference between the male, female, and juvenile of the species.","Cryolophosaurus may have been the first of the known Tetanurans but it most certainly was not the largest; however, with little carnivorous competition in the cooler climate of the Antarctic continent it would not have been necessary for Cryolophosaurus to grow to extreme sizes. Remaining at a “reasonable” size would also have allowed the Cryolophosaurus to thrive in the cool atmosphere by reducing the amount of food that it would require to fuel its large body in the cooler environment. In comparison to the much larger Tetanurans such as Megalosaurus and Allosaurus the Cryolophosaurus may have appeared smaller but in the cool Antarctic this large predator would have been close to the top of the heap when it came to the food chain. The Cryolophosaurus measured around 20 feet long and approximately 5 feet tall and it also weighed in at around 1,160 pounds. This large carnivore was much more formidable than many of the other species walking the Antarctic continent in the early Jurassic period.","Carnotaurus lived around 66 million years ago, before the mass extinction event that occurred at the end of the Cretaceous Period.Carnotaurus lived in an area of South America known as Patagonia. They were discovered in 1985 by a famous Argentine paleontologist named Jose Bonaparte.Estimates suggest that the Carnotaurus was around 8 metres (26 feet) in length and weighed somewhere between 1500 and 2500 kg.Unusually for a dinosaur, Carnotaurus eyes faced forward.Carnotaurus had very small arms and fingers that did not move."];
+			dinoObjectRay=[];
+			containerElement=document.getElementById("dotcontainer");
+			visitorNameRay = ["Ana","Arman", "Anabelle", "Alan", "Alvin", "Bob", "Bobby", "Chris", "Christopher", "Cammy", "Hank", "Elvis", "Glenn", "Kevin", "Rick", "Shane", "Joshua", "John", "Jon", "Jennifer", "Mort", "Morty", "Garrett", "Angela", "Nathan", "Veronica", "Evan", "Maggie", "Isaac", "Bart", "Bort", "Donald", "Gavin", "Amy", "Benson", "Carl", "Carly", "Luke", "Sam", "Abraham", "Piper","Jerry", "Chuck", "Charles", "Bill", "Clementine", "Peter", "Mario", "Joe", "Jonathan", "Ricky", "Jason", "Marie", "Maria", "Anthony", "Tania", "Trent", "Yvette", "Paul", "Zeke", "Zachary", "Quincy", "Calvin", "Abe", "Jack", "Jill", "Harold", "Harry", "Ron", "Will", "William", "Ralph", "Jeremiah", "Ivan", "Erin", "Seth", "Erika", "Robin", "George","Kristy", "Denise", "Tyreese", "Tyrone", "Sasha", "Cory", "Connor","Akalyn", "Scott", "Walter", "Jackie", "Bruce", "Mike", "Austin", "Steve", "Jacob", "Joel","Farhan","Saif"];
+			visitorObjectRay = [];
+			dotRay=[];
+			ctr=0;
+			deathPhrase=["OH NO NOT ","THEY GOT ","I NEVER LIKED ","YOU STILL OWE ME MONEY ","BYE ","ILL SEE YOU ON THE OTHER SIDE "];
+			for(var i=0;i<dinoNameRay.length;i++)
+			{
+				var dino = new dinoCreator(dinoNameRay[i],dinoFoodRay[i],dinoHistoryRay[i],dinoObjectRay.length);
+				dinoObjectRay.push(dino);
+			}
+			
+			dinoInfoElement=document.getElementById("infocontainer");
+			
+			randomEvents();
+			startmove=0;
+			coordsRay=[];
+			for(var y=1;y<16;y++)
+			{
+				pElement=document.getElementById("p"+y);
+				p2Element=pElement.getAttribute("coords");
+				coordsRay.push(p2Element);
+			}
+			zooHistoryBox = document.getElementById("zoohist");
+			zooHistory=[];
+			controlArea = document.getElementById("controlpanel");
+			angerBarElement=document.getElementById("angerBar");
+			dinostatusElement=document.getElementById("dinostatus");
+			hoverElement=document.getElementById("hover");
+		}
+		
+		function dinoCreator(NAME,FOOD,HISTORY,REFRENCE)
+		{
+			this.name=NAME;
+			this.food=FOOD;
+			this.refrence=REFRENCE;
+			this.history=HISTORY;
+			this.mood=getRandomInteger(0,8);
+			this.hunger=getRandomInteger(0,8); 
+			this.anger = getRandomInteger(0,8) ; // Hungry - 0 Not Hungry - 10 //
+			this.changeAnger = function()
+			{
+				if(this.anger<=0)
+				{
+					this.anger=0;
+				}
+				if(this.anger>=10)
+				{
+					this.anger=9;
+					rampage(this.refrence+1);
+				}
+			}
+		}
+		
+		function createVisitors()
+		{
+			this.name = visitorNameRay[getRandomInteger(0, visitorNameRay.length - 1)];
+		}
+		
+		function createCrowd()
+		{
+			ranNumber=getRandomInteger(2, 3);
+			for(var i = 0; i < getRandomInteger(2, 5); i++)
+			{
+				var visitor = new createVisitors();
+				visitorObjectRay.push(visitor);
+				newDot=document.createElement("img");
+				newDot.src=("images/dot2.png");
+				newDot.id=(visitorObjectRay.length-1);
+				dotRay.push(newDot);
+				containerElement.appendChild(newDot);
+			}
+			randomMove();
+		}
+		
+		function randomEvents()
+		{
+			setInterval("createCrowd();", 4000);
+			setInterval("randomDeath();", 3000);
+			setInterval("Walk();", 200);
+		}
+		function rampage(dino)
+		{
+			for(var i=0;i<9;i++)
+			{
+				randomDeath();
+			}
+			rampageElement=document.getElementById("rampage");
+			mapmageElement=document.getElementById("mapmage");
+			rampageElement.src="images/dino"+dino+".png";
+			mapmageElement.style.zIndex="-2";
+			warningElement=document.getElementById("sound").play();
+			setTimeout(rampageOver,4000);
+		}
+		function rampageOver()
+		{
+				mapmageElement.style.zIndex="0";
+		}
+		function createControlPanel(dino)
+		{
+			angerBarElement.innerHTML="Anger:"+dinoObjectRay[dino].anger;
+			dinostatusElement.innerHTML=dinoObjectRay[dino].name;
+			hoverElement.innerHTML="";
+			for(var i=0;i<4;i++)
+			{
+				x=document.createElement("button");
+				y=document.createElement("img");
+				y.src="images/food"+i+".png";
+				y.style.width="15%";
+				y.style.height="5%";
+				y.style.position="absolute";
+				y.style.top="58%";
+				y.style.left=(i*25)+4+"%";
+				x.id="feedbutton"+i;
+				x.setAttribute("onclick","feed("+dino+","+i+");");
+				x.innerHTML="FEED"
+				x.style.position="absolute";
+				x.style.width="20%";
+				x.style.fontSize="75%";
+				x.style.top="65%";
+				x.style.left=(i*25)+4+"%";
+				controlArea.appendChild(x);
+				controlArea.appendChild(y);
+			}
+			z=document.createElement("img");
+			z.style.position="absolute";
+			z.style.width="10%";
+			z.style.height="17%";
+			z.style.left="85%";
+			z.style.top="40%";
+			controlArea.appendChild(z);
+			ctr=1;
+			z.src="images/bar"+dinoObjectRay[dino].anger+".png";
+		}
+		function feed(dino,meal)
+		{
+			if(ctr==1)
+			{
+				if(dinoFoodRay[dino]=="Carnivore")
+				{
+					if(meal==0||meal==2)
+					{
+						dinoObjectRay[dino].anger--;
+					}
+					else
+					{
+						dinoObjectRay[dino].anger++;
+					}
+				}
+				if(dinoFoodRay[dino]=="Herbivore")
+				{
+					if(meal==1||meal==3)
+					{
+						dinoObjectRay[dino].anger--;
+					}
+					else
+					{
+						dinoObjectRay[dino].anger++;
+					}
+				}
+				if(dinoFoodRay[dino]=="Omnivore")
+				{
+					dinoObjectRay[dino].anger--;
+				}
+				dinoObjectRay[dino].changeAnger();
+				angerBarElement.innerHTML="Anger:"+dinoObjectRay[dino].anger;
+				z.src="images/bar"+dinoObjectRay[dino].anger+".png";
+			}
+		}
+		function randomMove()
+		{
+			for(var i=startmove;i<visitorObjectRay.length;i++)
+			{
+				Width=window.innerWidth;
+				Height=window.innerHeight;
+				dotRay[i].style.position="absolute";
+				dotRay[i].style.left=((76*Width*.7)/816+(Width*.25))+"px";
+				dotRay[i].style.top=((769*Height)/950)+"px";
+				dotRay[i].style.width=7+"px";
+				dotRay[i].style.height=7+"px";
+				dotRay[i].direction=3;
+			}
+			startmove=dotRay.length;
+		}
+		function Walk()
+		{
+			for(var i=0;i<dotRay.length;i++)
+			{
+			leftpos=dotRay[i].offsetLeft;
+			toppos=dotRay[i].offsetTop;
+				if(leftpos>=(window.innerWidth*.9)||dotRay[i].direction==1)
+				{
+					walkleft=leftpos+getRandomInteger(-10,-5);
+					walkup=toppos+getRandomInteger(1,5);
+					if(leftpos<=(window.innerWidth*.08))
+					{
+						dotRay[i].direction=3;
+					}
+					if(toppos>=window.innerHeight-(window.innerHeight*.05))
+					{
+						dotRay[i].direction=2;
+					}
+				}
+				if(toppos>=window.innerHeight-(window.innerHeight*.05)||dotRay[i].direction==2)
+				{
+					walkleft=leftpos+getRandomInteger(1,5);
+					walkup=toppos+getRandomInteger(-10,-5);
+					if(leftpos>=(window.innerWidth*.9))
+					{
+						dotRay[i].direction=1;
+					}
+					if(toppos<=(window.innerHeight*.05))
+					{
+						dotRay[i].direction=4;
+					}
+				}
+				if(leftpos<=(window.innerWidth*.3) ||dotRay[i].direction==3)
+				{
+					walkleft=leftpos+getRandomInteger(5,10);
+					walkup=toppos+getRandomInteger(1,5);
+					if(leftpos>=(window.innerWidth*.9))
+					{
+						dotRay[i].direction=1;
+					}
+					if(toppos>=window.innerHeight-(window.innerHeight*.05))
+					{
+						dotRay[i].direction=2;
+					}
+				}
+				if(toppos<=(window.innerHeight*.05)||dotRay[i].direction==4)
+				{
+					walkleft=leftpos+getRandomInteger(1,5);
+					walkup=toppos+getRandomInteger(5,10);
+					if(leftpos>=(window.innerWidth*.9))
+					{
+						dotRay[i].direction=1;
+					}
+					if(toppos>=window.innerHeight-(window.innerHeight*.05))
+					{
+						dotRay[i].direction=2;
+					}
+				}
+			dotRay[i].style.left=walkleft+"px";
+			dotRay[i].style.top=walkup+"px";
+			}
+		}
+		function randomDeath()
+		{
+			if(dotRay.length!=0)
+			{
+			ranPerson=getRandomInteger(0, visitorObjectRay.length-1);
+			zooHistory.push((deathPhrase[getRandomInteger(0, deathPhrase.length-1)]+ visitorObjectRay[ranPerson].name));
+			zooHistoryBox.innerHTML = zooHistoryBox.innerHTML + "<li>" + zooHistory[zooHistory.length - 1] + "</li>";
+			visitorObjectRay.splice(ranPerson,1);
+			containerElement.removeChild(dotRay[ranPerson]);
+			dotRay.splice(ranPerson,1);
+			startmove=dotRay.length;
+			}
+		}
+
+		function textchange(whichDino)
+		{
+			dinoInfoElement.innerHTML = dinoObjectRay[whichDino].name + "</br>" + dinoObjectRay[whichDino].food + "</br>" + dinoObjectRay[whichDino].history;
+			
+			createControlPanel(whichDino);
+		}
+		
+		function newcoordinates()
+		{
+			H=window.innerHeight;
+			W=window.innerWidth;
+			for(var x=1;x<16;x++)
+			{
+				newRay=[];
+				p1Ray=[];
+				p1Element=document.getElementById("p"+x);
+				p1Ray=coordsRay[x-1].split(",");
+				for(var i=0;i<4;i++)
+				{
+					if(i%2==0)
+					{
+					newW=W*.7;
+					newW2=newW*parseInt(p1Ray[i]);
+					newRay.push(newW2/816);
+					}
+					else
+					{
+					newH=parseInt(p1Ray[i])*H;
+					newRay.push(newH/950);
+					}
+				}
+				p1Element.coords=newRay.toString();
+			}
+		}
+		function retext()
+		{
+			dinoInfoElement.innerHTML="<h2>Welcome to the Dinosaur Zoo! </h2><p>Here You can Interact with a variety of dinosaurs including:</p><li>Utahraptor</li><li>Stegosaurus</li><li>Velociraptors</li><li>Adeopapposaurus</li><li>Tyrannosaurus Rex</li><li>Spinosaurus</li><li>Ankylosaurus</li><li>Brachiosaurus</li><li>Parasaurolophus</li><li>Triceratops</li><li>Protarchaeopteryx</li><li>Iguanodon</li><li>Oviraptor</li><li>Cryolophosaurus</li><li>Carnotaurus</li>";
+		}
+		</script> 
+		
+	</head>
+	<body onresize="newcoordinates();" onload="initialize();newcoordinates();">
+	<div id="intercontainer">
+	<div id="infocontainer">
+		<h2>Welcome to the Dinosaur Zoo! </h2>
+		<p>Here You can Interact with a variety of dinosaurs including:</p>
+		<li>Utahraptor</li>
+		<li>Stegosaurus</li>
+		<li>Velociraptors</li>
+		<li>Adeopapposaurus</li>
+		<li>Tyrannosaurus Rex</li>
+		<li>Spinosaurus</li>
+		<li>Ankylosaurus</li>
+		<li>Brachiosaurus</li>
+		<li>Parasaurolophus</li>
+		<li>Triceratops</li>
+		<li>Protarchaeopteryx</li>
+		<li>Iguanodon</li>
+		<li>Oviraptor</li>
+		<li>Cryolophosaurus</li>
+		<li>Carnotaurus</li>
+	</div></br>
+	<div id = "controlpanel"><h2 id="dinostatus">Status</h2>
+	<div id="hover">Hover to manage Dinosaurs!</div>
+	<div id="angerBar"></div>
+	</div> </br>
+	<div id = "zoohist"><h2>Zoo History</h2></div>
+	</div>
+	<div>
+		<img usemap="#zoomap"id="mapmage"src="images/pic.png"/>
+		<img id="rampage"src=""/>
+	</div>
+	<map name="zoomap">
+	<area id="p1"shape="rect" coords="327,511,407,524" onmouseout="retext();"onmouseover="textchange(0);">
+	<area id="p2"shape="rect" coords="138,416,238,428" onmouseout="retext();"onmouseover="textchange(1);">
+	<area id="p3"shape="rect" coords="134,139,231,151" onmouseout="retext();"onmouseover="textchange(2);">
+	<area id="p4"shape="rect" coords="304,292,448,303" onmouseout="retext();"onmouseover="textchange(3);">
+	<area id="p5"shape="rect" coords="510,239,560,251" onmouseout="retext();"onmouseover="textchange(4);">
+	<area id="p6"shape="rect" coords="679,379,770,391" onmouseout="retext();"onmouseover="textchange(5);">
+	<area id="p7"shape="rect" coords="531,383,615,394" onmouseout="retext();"onmouseover="textchange(6);">
+	<area id="p8"shape="rect" coords="526,570,616,581" onmouseout="retext();"onmouseover="textchange(7);">
+	<area id="p9"shape="rect" coords="544,773,665,786" onmouseout="retext();"onmouseover="textchange(8);">
+	<area id="p10"shape="rect" coords="394,145,482,156" onmouseout="retext();"onmouseover="textchange(9);">
+	<area id="p11"shape="rect" coords="105,373,203,381" onmouseout="retext();"onmouseover="textchange(10);">
+	<area id="p12"shape="rect" coords="168,622,231,633" onmouseout="retext();"onmouseover="textchange(11);">
+	<area id="p13"shape="rect" coords="373,596,469,606" onmouseout="retext();"onmouseover="textchange(12);">
+	<area id="p14"shape="rect" coords="315,774,421,786" onmouseout="retext();"onmouseover="textchange(13);">
+	<area id="p15"shape="rect" coords="116,552,181,561" onmouseout="retext();"onmouseover="textchange(14);">
+	</map>
+	<audio id="sound"src="warning.mp3"></audio>
+	<div id="dotcontainer">
+	<div>
+	</body>
+
+	
+	
+</html>

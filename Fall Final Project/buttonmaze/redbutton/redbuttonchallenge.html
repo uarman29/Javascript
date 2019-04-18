@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		div{
+		text-align:center;
+		font-size:36pt;
+		font-family:cosmic sands;
+		}
+		button 
+		{
+		height:100px;
+		width:100px;
+		background-color:red;
+		border-radius:50px;
+		}
+	
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+			comments=["You are indeed a brave one but I am sorry to say that this is the end","No matter how many times you click me nothing will happen","I am telling you that its game over now stop pressing me","STOP YOUR FOOLISHNESS","PLEABIAN YOU SHALL FACE DEATH FOR THIS","CEASE ALL CLICKING","I WILL NOT TOLERATE SUCH AN INSULT"];
+			punElement=document.getElementById("pun");
+			ctr=0;
+			linkElement=document.getElementById("link");
+			butElement=document.getElementById("but");
+			ctr1=0;
+		}
+		function commentpump()
+		{
+			if(ctr1==0)
+			{
+				ctr1=1;
+				if(ctr==comments.length)
+				{
+				linkElement.setAttribute('href',"redbuttonexpand.html");
+				linkElement.appendChild(butElement);
+				}
+				punElement.innerHTML=comments[ctr];
+				ctr++;
+				setTimeout(timestop,500);
+			}
+		}
+		function timestop()
+		{
+			ctr1=0;
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<div>
+	<a id="link">
+	<button id="but" onclick="commentpump();"></button>
+	</a>
+	<div>
+	<div id="pun">DO NOT PRESS</div>
+	</body>
+
+	
+	
+</html>

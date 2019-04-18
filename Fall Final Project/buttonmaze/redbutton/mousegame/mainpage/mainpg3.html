@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> RANDOM FACTS </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		color:white;
+		text-align:center;
+		}
+	
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+		ranfactElement=document.getElementById("ranfact");
+		facts=["I can't believe I got fired from the calendar factory. All I did was take a day off.","I'm reading a book about anti-gravity. It's impossible to put down.","I wanna make a joke about sodium, but Na..","Did you hear about the guy whose whole left side was cut off? He's all right now.	","I wasn't originally going to get a brain transplant, but then I changed my mind.","Never trust atoms, they make up everything.","A friend of mine tried to annoy me with bird puns, but I soon realized that toucan play at that game.","Don't trust people that do acupuncture, they're back stabbers.","I once heard a joke about amnesia, but I forgot how it goes.","Sleeping comes so naturally to me, I could do it with my eyes closed.","Did you hear about the guy who got hit in the head with a can of soda? He was lucky it was a soft drink.","What did the grape say when it got stepped on? Nothing - but it let out a little whine.","My friend's bakery burned down last night. Now his business is toast.","I couldn't quite remember how to throw a boomerang, but eventually it came back to me.","Have you ever tried to eat a clock? It's very time consuming.","A man just assaulted me with milk, cream and butter. How dairy.","So what if I don't know what apocalypse means!? It's not the end of the world!","	There was a big paddle sale at the boat store. It was quite an oar deal.","Have you heard about the band 1023MB I heard they havent had any gigs yet"];
+		fl=facts.length-1;
+		ctr=0;
+		musicElement=document.getElementById("sound");
+		musicElement2=document.getElementById("sound2");
+		musicElement3=document.getElementById("sound3");
+		musicElement4=document.getElementById("sound4");
+		musicElement5=document.getElementById("sound5");
+		}
+		function getfact()
+		{
+			if(ctr==0)
+			{
+				ctr=1
+				if(fl==-1)
+				{
+				ranfactElement.innerHTML="WE ARE OUT OF PUNS";
+				return;
+				}
+				ran=getRandomInteger(0,fl)
+				ranfactElement.innerHTML=facts[ran];
+				facts.splice(ran,1);
+				fl=facts.length-1;
+				setTimeout(timestop,500);
+			}
+		}
+		function music()
+		{
+			x=event.keyCode;
+			if(x==65)
+			{
+				musicElement.play();
+			}
+			if(x==83)
+			{
+				musicElement2.play();
+			}
+			if(x==68)
+			{
+				musicElement3.play();
+			}
+			if(x==70)
+			{
+				musicElement4.play();
+			}
+			if(x==71)
+			{
+				musicElement5.play();
+			}
+		}
+		function timestop()
+		{
+			ctr=0;
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload="initialize();" onkeydown="music();">
+	<h1 id="ranfact">
+	BAD PUNS
+	</h1>
+	<button onclick="getfact();">Random Pun</button>
+	<a href="mainpg.html"><button>Return to main page?</button></a>
+	<audio id="sound"src="drum.mp3"></audio>
+	<audio id="sound2"src="boo.mp3"></audio>
+	<audio id="sound3"src="crickets.mp3"></audio>
+	<audio id="sound4"src="mouse.mp3"></audio>
+	<audio id="sound5"src="sadness.mp3"></audio>
+	</body>
+
+	
+	
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script>
+			function initialize()
+			{
+				ctr=0;
+				whyElement=document.getElementById("why");
+				whatElement=document.getElementById("what");
+				nums=[];
+				ran=getRandomInteger(50,100);
+				cities=["Phoenix","Saskatoon","Paris","London","Barcelona","Sydney"];
+			}
+			function ranstuff()
+			{
+			ran=getRandomInteger(50,100);
+				while(ctr<ran)
+				{
+					newran=getRandomInteger(0,100);
+					nums[ctr]= newran;
+					whyElement.innerHTML += "nums["+ctr+"]"+"="+ nums[ctr] + "<br/>";
+					ctr++;
+					
+				}
+				ctr=0;
+			}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<div id = "why">
+	</div>
+	<div id="what">
+	</div>
+	<button onclick= "ranstuff();">DO STUFF</button>
+	</body>
+
+	
+	
+</html>

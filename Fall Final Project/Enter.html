@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		}
+		div
+		{
+		text-align:center;
+		}
+		#question
+		{
+		height:50px;
+		width:100px;
+		}
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+		questionElement=document.getElementById("question");
+		candlesElement=document.getElementById("candles");
+		candlesElement2=document.getElementById("candles2");
+		candlesElement3=document.getElementById("candles3");
+		linkElement=document.getElementById("link");
+		ctr=0;
+		}
+		function clickcount()
+		{
+			ctr++;
+			if(ctr==1)
+			{
+				questionElement.innerHTML="REALLY?";
+				candlesElement.src="images/flame2.jpg";
+			}
+			if(ctr==2)
+			{
+				questionElement.innerHTML="YOU SURE?";
+				candlesElement3.src="images/blue.png";
+			}
+			if(ctr==3)
+			{
+				questionElement.innerHTML="Alright then come on in";
+				candlesElement2.src="images/new2.jpg";
+			}
+			if(ctr>3)
+			{
+			linkElement.setAttribute('href',"buttonmaze/buttoncodetext.html");
+			}
+			
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<div>
+	<img id="candles" src=""/>
+	<img id="candles2" src=""/>
+	<img id="candles3" src=""/>
+	</div>
+	<div>
+	<a id="link">
+	<button id="question" onclick= "clickcount();">Do you Wish to Enter</button>
+	</a>
+	</div>
+	</body>
+
+	
+	
+</html>

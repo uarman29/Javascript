@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> RANDOM FACTS </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		color:white;
+		text-align:center;
+		}
+	
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+		ranfactElement=document.getElementById("ranfact");
+		facts=["If you yelled for 8 years, 7 months and 6 days, you would have produced enough sound energy to heat one cup of coffee.","The strongest muscle in proportion to its size in the human body is the tongue.","Every time you lick a stamp, you're consuming 1/10 of a calorie.","A flock of crows is known as a murder.","Banging your head against a wall uses 150 calories an hour.","Your stomach has to produce a new layer of mucus every two weeks otherwise it will digest itself","A cockroach will live nine days without it's head, before it starves to death.","Butterflies taste with their feet.","Elephants are the only mamals that can't jump.","Starfish don't have brains.","An ostrich's eye is bigger that it's brain.","The fingerprints of koala bears are virtually indistinguishable from those of humans, so much so that they could be confused at a crime scene.","A male emperor moth can smell a female emperor moth up to 7 miles away.","A giraffe can clean its ears with its 21-inch tongue!","The number of possible ways of playing the first four moves per side in a game of chess is 318,979,564,000.","The sentence The quick brown fox jumps over the lazy dog. uses every letter in the alphabet.","Only one person in two billion will live to be 116 or older.","Your nose can remember 50,000 different scents.","Humans shed about 600,000 particles of skin every hour.","There are 100,000 miles of blood vessels in an adult human body.","An average person produces about 25,000 quarts of saliva in a lifetime, enough to fill two swimming pools.","Within three days of death, the enzymes that once digested your dinner begin to eat you.","Cherophobia is the fear of fun.","If you lift a kangaroo's tail off the ground it can't hop.","A crocodile can't poke its tongue out","Sea otters hold hands when they sleep so they don't drift away from each other.","Panphobia is the fear of everything","Mel Blanc - the voice of Bugs Bunny - was allergic to carrots.","The bat is the only mammal that can fly.","The longest recorded flight of a chicken is 13 seconds."," There are more possible iterations of chess than there are known atoms in the universe","A hummingbird weighs less than a penny","There are more vacant homes in the United States than there are homeless people","If you try to suppress a sneeze you can rupture a blood vessel in your head and die","A jellyfish is 95 percent water","The tongue is the strongest muscle in the human body","Frozen lobsters can come back to life when thawed","A flea can jump 350 times its body length,the equivalent of a human jumping the length of a football field","You are more likely to die from a falling coconut than a shark attack","The chance of you dying on the way to get lottery tickets is greater than your chance of winning","Our eyes are the same size from birth but our nose and ears never stop growing","Coca-Cola would be green if coloring was'nt added to it","Going to work is statistically three times more dangerous than war","A jiffy is an actual unit of time for 1/100th of a second"];
+		fl=facts.length-1;
+		ctr=0;
+		}
+		function getfact()
+		{
+			if(ctr==0)
+			{
+				ctr=1;
+				if(fl==-1)
+				{
+				ranfactElement.innerHTML="WE ARE OUT OF FACTS";
+				return;
+				}
+				ran=getRandomInteger(0,fl)
+				ranfactElement.innerHTML=facts[ran];
+				facts.splice(ran,1);
+				fl=facts.length-1;
+				setTimeout(timestop,500);
+			}
+		}
+		function timestop()
+		{
+			ctr=0;
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<h1 id="ranfact">
+	FACTS
+	</h1>
+	<button onclick="getfact();">Random Fact</button>
+	<a href="mainpg.html"><button>Return to main page?</button></a>
+	</body>
+
+	
+	
+</html>

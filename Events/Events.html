@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html onkeydown="disapear(event);">
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			testElement=document.getElementById("test");
+			propertyElement=document.getElementById("property");
+			ctr=0;
+		}
+		function disapear(e)
+		{
+			propertyElement.innerHTML = e.keyCode+"<br/>"+e.which+"<br/>"+e.location;
+			ctr++;
+			if(ctr%2==1)
+			{
+			testElement.style.display="none";
+			}
+			else
+			{
+			testElement.style.display="inline";
+			}
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<img id="test"src="images/1-3.png"/>
+	<input type="text"/>
+	<div id="property"></div>
+	</body>
+
+	
+	
+</html>

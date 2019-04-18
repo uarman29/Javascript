@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> GROCERY LIST </title>
+		<style> 
+		button
+		{
+		border-color:red;
+		border-width:3px;
+		}
+		input
+		{
+		border-color:blue;
+		border-width:2px;
+		}
+	
+		</style> 
+		
+		<script>
+			function initialize()
+			{
+				foodElement=document.getElementById("food");
+				foodlist= document.getElementById("item");
+				moveElement=document.getElementById("move");
+				grocery=[];
+				cnd=0;
+				ctr=0;
+			}
+			function additem()
+			{
+				words=foodlist.value;
+				grocery[ctr]=words;
+				ctr++;
+				display();
+				foodlist.value="";
+			}
+			function moveup()
+			{
+				itemnum=moveElement.value;
+				lt=grocery.length-1;
+				if(itemnum<=0|| itemnum>lt)
+				{
+				return;
+				}
+				item1=grocery[itemnum];
+				item2=grocery[itemnum-1];
+				grocery[itemnum]=item2;
+				grocery[itemnum-1]=item1;
+				display();
+				moveElement.value=itemnum-1;
+			}
+			function movedown()
+			{
+				lt=grocery.length-1;
+				itemnum=moveElement.value;
+				if(itemnum>=lt||itemnum<0)
+				{
+				return;
+				}
+				item1=grocery[itemnum];
+				item2=grocery[itemnum- -1];
+				grocery[itemnum]=item2;
+				grocery[itemnum- -1]=item1;
+				display();
+				moveElement.value=itemnum- -1;
+			}
+			function kill()
+			{
+			itemnum=moveElement.value;
+			grocery.splice(itemnum,1);
+			ctr--;
+			display();
+			}
+			function display()
+			{
+				cnd=0;
+				foodElement.innerHTML="";
+				lt=grocery.length;
+				while(cnd<lt)
+				{
+					foodElement.innerHTML += cnd+ ":"+ grocery[cnd] + "<br/>";
+					cnd++;
+				}
+			}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<button onclick = "additem();"> Add </button>
+	<input id ="item", type= "text"/>
+	<button onclick = "moveup();">UP</button>
+	<input id ="move", type= "text"/>
+	<button onclick = "movedown();">DOWN</button>
+	<button onclick = "kill();">DELETE</button>
+	<div id = "food">
+	</div>
+	</body>
+
+	
+	
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head>
+		<title>Images</title>
+		<style> 
+	
+		div
+		{
+		text-align:center;
+		}
+		img
+		{
+		width: 105px;
+		}
+		#mommabug
+		{
+		width:200px;
+		text-align:center;
+		}
+
+		</style>
+		<script src = "utilities1.js"></script>
+		<script> 
+		
+		function initialize()
+		{
+			NONE=0,OUCH=1;
+			messageOutput = document.getElementById("message");
+		
+			bugnumber = 16;
+			msg=NONE;
+			msgValue2 = NONE;
+			msgValue3 = NONE;
+			msgValue4 = NONE;
+			msgValue8 = NONE;
+			msgValue9 = NONE;
+			msgValue10 = NONE;
+			msgValue11 = NONE;
+		}
+		function run(bug)
+		{
+			squish = bug;
+			change = document.getElementById("bug"+ squish);
+			if(change.getAttribute("src")=="images/images.jpg")
+			{
+				bugnumber--;
+					if (bugnumber % 2 == 1 && bugnumber>1 )
+						{
+							msg=OUCH;
+						}
+					if (bugnumber % 2 == 0 && bugnumber >=8)
+						{
+							msg=getRandomInteger(8,11);
+							while (msgValue8==msg || msgValue9==msg ||msgValue10==msg||msgValue11==msg)
+							{
+							msg=getRandomInteger(8,11);
+							}
+						}
+					if (bugnumber % 2 == 0 && bugnumber <= 6 && bugnumber > 0)
+						{
+							msg=getRandomInteger(2,4);
+							while (msgValue2==msg || msgValue3==msg ||msgValue4==msg)
+							{
+							msg=getRandomInteger(2,4);
+							}
+						}
+					if(bugnumber == 1)
+						{
+						msg = 15
+						}
+				display();
+			}
+			if (bugnumber==1)
+			{
+			momma=document.getElementById("mommabug");
+			momma.src = "images/images.jpg";
+			messageOutput.innerHTML="That it. Now Mamma angry!";
+			}
+		}
+		function display()
+		{
+			change.src = "images/splatter.png";
+			if(msg==OUCH)
+			{
+			messageOutput.innerHTML = "OUCH";
+			}
+			if (msg==8)
+			{
+				messageOutput.innerHTML = "BRING IT ON";
+				msgValue8=8;
+			}
+			if (msg==9)
+			{
+				messageOutput.innerHTML = "THAT WAS NOTHING";
+				msgValue9=9;
+			}
+			if (msg==10)
+			{
+				messageOutput.innerHTML = "HA YOU ARE WEAK";
+				msgValue10=10;
+			}
+			if (msg==11)
+			{
+				messageOutput.innerHTML = "IS THAT ALL YOU GOT";
+				msgValue11=11;
+			}
+			if (msg==2)
+			{
+				messageOutput.innerHTML = "HAVE MERCY";
+				msgValue2=2;
+			}
+			if (msg==3)
+			{
+				messageOutput.innerHTML = "PLZ STOP";
+				msgValue3=3;
+			}
+			if (msg==4)
+			{
+				messageOutput.innerHTML = "I BEG OF YOU STOP";
+				msgValue4=4;
+			}
+			if (msg==15)
+			{
+				messageOutput.innerHTML = "YOUVE KILLED US ALL";
+			}
+		}
+		
+		
+		</script>
+		
+	</head>
+	<body onload = "initialize();">
+	<div id="momma">
+	<img id="mommabug"/>
+	</div>
+	<div>
+	<img id = "bug15"onclick = "run(15);"src = "images/images.jpg" /><img id = "bug14"onclick = "run(14);"src = "images/images.jpg" />
+	<img id = "bug13"onclick = "run(13);"src = "images/images.jpg" /><img id = "bug12"onclick = "run(12);"src = "images/images.jpg" /><img id = "bug11"onclick = "run(11);"src = "images/images.jpg" />
+	</div>
+	<div>
+	<img id = "bug10"onclick = "run(10);"src = "images/images.jpg" /><img id = "bug9"onclick = "run(9);"src = "images/images.jpg" />
+	<img id = "bug8"onclick = "run(8);"src = "images/images.jpg" /><img id = "bug7"onclick = "run(7);"src = "images/images.jpg" /><img id = "bug6"onclick = "run(6);"src = "images/images.jpg" />
+	</div>
+	<div>
+	<img id = "bug5"onclick = "run(5);"src = "images/images.jpg" /><img id = "bug4"onclick = "run(4)"src = "images/images.jpg" />
+	<img id = "bug3"onclick = "run(3);"src = "images/images.jpg" /><img id = "bug2"onclick = "run(2)"src = "images/images.jpg" /><img id = "bug1"onclick = "run(1);"src = "images/images.jpg" />
+	</div>
+	<div id="message">
+		You will never defeat us!
+	</div>
+	</body>
+
+	
+	
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+<html>
+	<head>
+		<title>Card Engine Tester</title>
+		<style></style>
+		<script src = "utilities.js"></script>
+		<script src = "cardengine.js"></script>
+		<script>
+			function initialize()
+			{
+				cardOutBox = document.getElementById("cardbox");
+				cardOutArray = cardOutBox.getElementsByTagName("img");
+				
+				deck = generateStandardDeck();
+				deck=shuffleStandardDeck(deck);
+				tmpdeck=[];
+				display();
+			}
+			function dealcard()
+			{
+				tmpdeck=dealCard(deck);
+				alert(tmpdeck[0][0]);
+				total=addCard(tmpdeck);
+				alert(total);
+				display();
+			}
+			
+			function display()
+			{
+				for (var i = 0; i < tmpdeck.length; i++)
+				{
+					cardOutArray[i].src = "cardimages/" + tmpdeck[i].cardImg;
+				}
+			}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+	<button onclick="dealcard();"></button>
+		<div id = "cardbox">
+			<img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><br />
+			<img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><br />
+			<img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><br />
+			<img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><img /><br />
+		</div>
+	</body>
+</html>

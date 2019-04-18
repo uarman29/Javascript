@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head>
+		<title> index.html </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		}
+		div
+		{color:white;
+		}
+	
+		</style> 
+		
+		<script> 
+		
+			function initialize()
+			{
+				counterElement = document.getElementById("mycounter");
+				counterpElement = document.getElementById("pennies");
+				counternElement = document.getElementById("nickels");
+				counterdElement = document.getElementById("dimes");
+				counterqElement = document.getElementById("quarters");
+				//counterElement.innerHTML=50;
+				ctr = 0;
+				ctp = 0;
+				ctn = 0;
+				ctd = 0;
+				ctq = 0;
+			}
+			function add()
+			{
+			ctr += .01;
+			ctp += 1;
+			}
+			function add5()
+			{
+			ctr += .05;
+			ctp += 5;
+			}
+			function add52()
+			{
+			ctr += .05;
+			ctn += 1;
+			}
+			function add10()
+			{
+			ctr += .1;
+			ctd += 1;
+			}
+			function add25()
+			{
+			ctr += .25;
+			ctq += 1;
+			}
+			function add252()
+			{
+			ctr += .25;
+			ctn += 5;
+			}
+			function add50()
+			{
+			ctr += .5;
+			ctd += 5;
+			}
+			function add125()
+			{
+			ctr += 1.25;
+			ctq += 5;
+			}
+			function subtract()
+			{
+			ctr -= .01;
+			ctp -= 1;
+			}
+			function subtract5()
+			{
+			ctr -= .05;
+			ctp -= 5;
+			}
+			function subtract52()
+			{
+			ctr -= .05;
+			ctn -= 1;
+			}
+			function subtract10()
+			{
+			ctr -= .1
+			ctd -= 1;
+			}
+			function subtract25()
+			{
+			ctr -= .25;
+			ctq -= 1;
+			}
+			function subtract252()
+			{
+			ctr -= .25;
+			ctn -= 5;
+			}
+			function subtract50()
+			{
+			ctr -= .5;
+			ctd -= 5;
+			}
+			function subtract125()
+			{
+			ctr -= 1.25;
+			ctq -= 5;
+			}
+			function drawCounter()
+			{
+			counterElement.innerHTML = ctr;
+			counterpElement.innerHTML = ctp;
+			counternElement.innerHTML = ctn;
+			counterdElement.innerHTML = ctd;
+			counterqElement.innerHTML = ctq;
+			}
+		</script> <!-- Javascript goes in here -->
+		
+	</head>
+	<body onload = "initialize();">
+	<div id = "mycounter">
+	0
+	</div>
+	<div><span id = "pennies">0</span>
+	Pennies
+	<button onclick = "add(); drawCounter();"> Add 1 </button>
+	<button onclick = "add5(); drawCounter();"> Add 5 </button>
+	<button onclick = "subtract(); drawCounter();">Subtract 1</button>
+	<button onclick = "subtract5(); drawCounter();">Subtract 5</button>
+	</div>
+	<div><span id = "nickels">0</span>
+	Nickels
+	<button onclick = "add52(); drawCounter();"> Add 1 </button>
+	<button onclick = "add252(); drawCounter();"> Add 5 </button>
+	<button onclick = "subtract52(); drawCounter();">Subtract 1</button>
+	<button onclick = "subtract252(); drawCounter();">Subtract 5</button>
+	</div>
+	<div><span id = "dimes">0</span>
+	Dimes
+	<button onclick = "add10(); drawCounter();"> Add 1 </button>
+	<button onclick = "add50(); drawCounter();"> Add 5 </button>
+	<button onclick = "subtract10(); drawCounter();">Subtract 1</button>
+	<button onclick = "subtract50(); drawCounter();">Subtract 5</button>
+	</div>
+	<div><span id = "quarters">0</span>
+	Quarters
+	<button onclick = "add25(); drawCounter();"> Add 1 </button>
+	<button onclick = "add125(); drawCounter();"> Add 5 </button>
+	<button onclick = "subtract25(); drawCounter();">Subtract 1</button>
+	<button onclick = "subtract125(); drawCounter();">Subtract 5</button>
+	</div>
+	<div>
+	
+	
+	</body>
+</html>
+	

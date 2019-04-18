@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bug Splat</title>
+		<style>
+			body
+			{
+				background-image:url("images/grassbackground.png");
+				color:white;
+				font:bold 24pt calibri;
+			}
+			
+			div, h1, p 
+			{
+				text-align:center; 
+			}
+			
+			img 
+			{
+				padding:5px;
+				width:175px;
+			}
+			
+			span
+			{
+				color:black;
+				padding:15px;
+				background-color:lightgrey;
+			}
+		</style>
+
+		<script type = "text/javascript">
+			function initialize()
+			{
+
+				com=["You'll have to do better than that!","Hah!","We will swarm your homeland!","The many legs of the insect world will stampede over your pitiful efforts!","You call that squashing?","We will bathe in the blood of our enemies!","Please!  No more!","Oh, no!  Not Murray!","Retreat!", "Have you no mercy?!","My leg!  Is that <i>my</i> leg?","What kind of a monster are you?"];
+
+				var i=1;
+				bugList=[];
+				while(bugElement!=null)
+				{
+					var bugElement=document.getElementById("bug"+i+"img");
+					if(bugElement!= null)
+					{
+						bugList[i-1] = bugElement;
+						i++;
+					}
+				}
+				
+				messageOut = document.getElementById("messageBox");
+				
+				splatComment = "You will never defeat us!";
+				numClicks = 0;
+			}
+			
+
+			function getSplatComment()
+			{
+				if (numClicks % 2 == 1)
+				{
+					if (numClicks == 15)
+						splatComment = "You've killed us all.";
+					else
+						splatComment = "Ouch!";
+				}
+				else
+				{
+					if (numClicks < 8)
+					{
+						rndNum = parseInt(Math.random() * 6) + 1;
+					}
+					
+				}
+			}
+			
+			function commentIsUsed(commentNum)
+			{
+				if (commentNum == 1)
+					return com1Used;
+					
+				if (commentNum == 2)
+					return com2Used;
+					
+				if (commentNum == 3)
+					return com3Used;
+
+				if (commentNum == 4)
+					return com4Used;
+
+				if (commentNum == 5)
+					return com5Used;
+
+				if (commentNum == 6)
+					return com6Used;
+
+				if (commentNum == 7)
+					return com7Used;
+
+				if (commentNum == 8)
+					return com8Used;
+
+				if (commentNum == 9)
+					return com9Used;
+
+				if (commentNum == 10)
+					return com10Used;
+
+				if (commentNum == 11)
+					return com11Used;
+
+				if (commentNum == 12)
+					return com12Used;
+
+				//Default to not used.
+				return false;
+			}
+			
+
+			function generateRandomComment()
+			{
+
+				do
+				{
+					if (numClicks < 8)
+						rndNum = parseInt(Math.random() * 6) + 1;
+					else
+						rndNum = parseInt(Math.random() * 6) + 7;
+				} while (commentIsUsed(rndNum));
+
+			}
+			
+			function splat(bugClicked)
+			{
+				if(bugList[bugClicked] == null)
+				{
+				return;
+				}
+				bugList[bugClicked].src = "images/splat.png";
+				bugList[bugClicked] = null;
+				numClicks++;
+				display();
+			}
+			
+			function display()
+			{
+				messageBox.innerHTML = splatComment;
+			}
+		</script>
+				
+	</head>
+		
+	<body onload = "initialize();">
+		<h1>All Your Bug Are Belong To Us!</h1>
+		<div>
+			<img id = "bug1img" onclick = "splat(0);" src = "images/bug.png" />
+			<img id = "bug2img" onclick = "splat(1);" src = "images/bug.png" />
+			<img id = "bug3img" onclick = "splat(2);" src = "images/bug.png" />
+			<img id = "bug4img" onclick = "splat(3);" src = "images/bug.png" />
+			<img id = "bug5img" onclick = "splat(4);" src = "images/bug.png" />
+		</div>
+		<div>
+			<img id = "bug6img" onclick = "splat(5);" src = "images/bug.png" />
+			<img id = "bug7img" onclick = "splat(6);" src = "images/bug.png" />
+			<img id = "bug8img" onclick = "splat(7);" src = "images/bug.png" />
+			<img id = "bug9img" onclick = "splat(8);" src = "images/bug.png" />
+			<img id = "bug10img" onclick = "splat(9);" src = "images/bug.png" />
+		</div>
+		<div>
+			<img id = "bug11img" onclick = "splat(10);" src = "images/bug.png" />
+			<img id = "bug12img" onclick = "splat(11);" src = "images/bug.png" />
+			<img id = "bug13img" onclick = "splat(12);" src = "images/bug.png" />
+			<img id = "bug14img" onclick = "splat(13);" src = "images/bug.png" />
+			<img id = "bug15img" onclick = "splat(14);" src = "images/bug.png" />
+		</div>
+		<p><span id = "messageBox">You will never defeat us!</span></p>
+	</body>
+</html>

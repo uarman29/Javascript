@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Candlesticks</title>
+	</head>
+		<style>
+		body
+		{
+		background-image:url("candles.png");
+		color:antiquewhite;
+		}
+		ul
+		{
+		font:14pt calibri;
+		list-style-type:none;
+		margin-left:85px;
+		margin-top:175px;
+		position:fixed;
+		}
+		a
+		{
+		color:antiquewhite;
+		}
+		div
+		{
+		font:12pt calibri;
+		text-align:justify;
+		margin-left:400px;
+		margin-right:150px;
+		}
+		h1
+		{
+		font:36pt copperplate gothic bold;
+		text-align:center;
+		}
+		h2
+		{
+		font:20pt copperplate gothic light;
+		text-align:center;
+		}
+		p
+		{
+		font:10pt;
+		text-align:center;
+		}
+		div>span /* only colors direct descendants*/
+		{
+		color:#FF9933;
+		}
+		h1+h2 /* if h2 comes right after h1 italicize it */
+		{
+		font-style:italic
+		}
+		h1~h2
+		{
+		color:red;
+		}
+		.maintext
+		{
+		color:yellow;
+		margin-top:175px;
+		position:fixed;
+		}
+		span#hi
+		{
+		color:lightblue;
+		}
+		
+		</style>
+	<body>
+		<h1>The Candlestick Page</h1>
+		<h2>The Place to See Candlesticks</h2>
+		<h2>This material is the property of Candlesticks Incorporated</h2>
+		
+		<ul>
+			<li><a href = "index.htm">Home</a></li>
+			<li><a href = "index.htm">About</a></li>
+			<li><a href = "index.htm">The Trouble With Candlesticks</a></li>
+			<li><a href = "index.htm">The Trouble With Candles</a></li>
+			<li><a href = "index.htm">The Trouble With Fire</a></li>
+			<li><a href = "index.htm">Navigation</a></li>
+			<li><a href = "index.htm">Help</a></li>
+			<li><a href = "index.htm">Contact</a></li>
+		</ul>
+		<div class ="maintext">
+			<p><span>I DONT LIKE ICECREAM</span></p>
+			<span>Candlestick</span> holders are used to hold candles.  While holding candles, the <span>candlestick</span> holders will have candles in them.  Even while the candles are burning, the <span>candlestick</span> holders will still hold them.  Wax may drip onto the <span>candlestick</span> holders but the <span>candlestick</span> holders will continue to hold the candles despite the wax.  <span>Candlestick</span> holders hold candles.
+		</div>
+		<span id="hi">HELLO</span>
+	</body>
+</html>

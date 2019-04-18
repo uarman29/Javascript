@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+<html>
+	<head>
+		<title>Taking Random Items</title>
+		<style>
+			body, button
+			{
+				font: 24pt comic sans ms;
+			}
+			
+			div, p
+			{
+				text-align:center;
+			}
+			
+			span
+			{
+				padding:10px;
+			}
+		</style>
+		<script src = "utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				LOWER = 0, UPPER = 2;
+				NONE=-1,TWINE = 0, RUBBER_BAND = 1, SKITTLE = 2;
+			
+				twineOutput = document.getElementById("twineqty");
+				rubberBandOutput = document.getElementById("bandqty");
+				skittleOutput = document.getElementById("skittleqty");
+				
+				listOutput = document.getElementById("listout");
+				
+				addButton = document.getElementById("addbtn");
+				
+				twine = 5;
+				rubberBand = 5;
+				skittle = 5;
+				
+				myList = listOutput.innerHTML;
+			}
+			function addRandomItem()
+			{
+				myList += getSelectedItem();
+				display();
+			}
+			function getItemString(itm)
+			{
+				if(itm==TWINE)
+					return "Twine<br />";
+				
+			}
+			function getSelectedItem()
+			{
+				if(twine==0 && rubberband==0&& skittle==0)
+				return NONE;
+					do
+					{
+						var itm = getRandomInteger(LOWER,UPPER);
+						if(itm == TWINE && twine<=0)
+						{
+						item = NONE;
+						}
+						if(itm == RUBBER_BAND && rubberband<=0)
+						{
+						item = NONE;
+						}
+						if(itm == SKITTLE && skittle<=0)
+						{
+						item = NONE;
+						}
+					}while(itm == NONE);
+				return itm;
+			}
+			function display()
+			{
+				twineOutput.innerHTML = twine;
+				rubberBandOutput.innerHTML = rubberBand;
+				skittleOutput.innerHTML = skittle;
+				
+				listOutput.innerHTML = myList;
+			}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+		<p>
+			<span>Twine:<span id = "twineqty">5</span></span>
+			<span>Rubber Bands:<span id = "bandqty">5</span></span>
+			<span>Skittles:<span id = "skittleqty">5</span></span>
+		</p>
+		<div><button id = "addbtn" onclick = "addRandomItem()">Add Item</button></div>
+		<div id = "listout"></div>
+	</body>
+</html>

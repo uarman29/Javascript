@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+<html>
+	<head>
+		<title>Image Gallery</title>
+		<link rel = "stylesheet" href = "imagegallery.css" />
+		<style></style>
+		<script>
+		function initialize()
+		{
+		changeElement = document.getElementById("change");
+		nameElement = document.getElementById("name");
+		imageSrc = "";
+		}
+		function name(modifier)
+		{
+		nameElement.innerHTML = modifier;
+		}
+		function update(modifier)
+		{
+		imageSrc = modifier;
+		
+		}
+		function display()
+		{
+		changeElement.src = imageSrc;
+		}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+	<h6>
+		<img src = "images/aang.jpg" onclick = "update('images/aang.jpg');display();" />
+		<img src = "images/batman.jpg" onclick = "update('images/batman.jpg');display();"/>
+		<img src = "images/doctor.jpg" onclick = "update('images/doctor.jpg');display();"/>
+		<img src = "images/han solo.jpg" onclick = "update('images/han solo.jpg');display();"/>
+		<img src = "images/indiana jones.jpg" onclick = "update('images/indiana jones.jpg');display();"/>
+		<img src = "images/kirk.jpg" onclick = "update('images/kirk.jpg');display();"/>
+		<img src = "images/moon knight.jpg" onclick = "update('images/moon knight.jpg');display();"/>
+		<img src = "images/rick grimes.jpg" onclick = "update('images/rick grimes.jpg');display();"/>
+	</h6>
+	<h5>
+		<img id = "change" src = "" />
+	</h5>
+	<h4 id = "name">
+	
+	</h4>
+	</body>
+</html>

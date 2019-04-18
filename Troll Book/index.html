@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>A Word About Trolls</title>
+		<link type = "text/css" href = "trolls.css" />
+	</head>
+		<style>
+		#tabletop
+		{
+		height:100%;
+		width:100%;
+		z-index:-1;
+		position:fixed;
+		top:0px;
+		left:0px;
+		}
+		#title
+		{
+		border-style:solid;
+		border-width:5px;
+		border-radius:10px;
+		background-color:#E6C580;
+		font-family:papyrus;
+		text-align:center;
+		}
+		#titlecontainer
+		{
+		text-align:center;
+		}
+		.text
+		{
+		display:none;
+		position:absolute;
+		width:28%;
+		height:60%;
+		left:35%;
+		top:25%;
+		overflow:auto;
+		}
+		#scroll
+		{
+		height:90%;
+		width:40%;
+		position:absolute;
+		left:30%;
+		top:10%;
+		}
+		#rip
+		{
+		opacity:.3;
+		width:10%;
+		position:absolute;
+		top:23%;
+		left:55%
+		}
+		#name
+		{
+		position:absolute;
+		left:10%;
+		top:30%;
+		}
+		#elder
+		{
+		position:absolute;
+		left:10%;
+		top:40%;
+		}
+		#school
+		{
+		position:absolute;
+		left:10%;
+		top:50%;
+		}
+		#ge
+		{
+		position:absolute;
+		left:10%;
+		top:60%;
+		}
+		#small
+		{
+		position:absolute;
+		left:12%;
+		top:70%;
+		}
+		.menu
+		{
+		border-style:solid;
+		border-width:5px;
+		border-radius:10px;
+		background-color:#E6C580;
+		font-family:papyrus;
+		padding:.5% 3% .5% 3%;
+		}
+		#titletext
+		{
+		position:absolute;
+		left:35%;
+		top:30%;
+		width:25%;
+		font-size:30px;
+		font-family:papyrus;
+		z-index:2;
+		}
+		#scrollcontainer
+		{
+		overflow:none;
+		}
+		</style>
+		<script>
+			function initialize()
+			{
+			ctr=0;
+			}
+			function change(id)
+			{
+			if(ctr>0)
+			{
+			xtext.style.display="none";
+			}
+			xtitle=document.getElementById("titletext");
+			xtitle.style.display="none";
+			xid=document.getElementById(id);
+			xid.style.backgroundColor="brown";
+			xtext=document.getElementById(id+"text");
+			xtext.style.display="inline";
+			ctr++;
+			}
+			function rechange()
+			{
+			xid.style.backgroundColor="#E6C580";
+			}
+			function renew()
+			{
+				if(ctr>0)
+				{
+				xtext.style.display="none";
+				}
+				xtitle=document.getElementById("titletext");
+				xtitle.style.display="inline";
+			}
+		</script>
+	<body onload="initialize();">
+		<h1 onclick="initialize();"id="titlecontainer"><span id="title">The Book of Trolls</span></h1>
+			<img id="tabletop"src = "images/tabletop.jpg" />
+			<span onmouseout="rechange();"onmouseover="change('name');"id="name"class="menu">Names</span>
+			<span onmouseout="rechange();"onmouseover="change('elder');"id="elder"class="menu">Elders</span>
+			<span onmouseout="rechange();"onmouseover="change('school');"id="school"class="menu">School</span>
+			<span onmouseout="rechange();"onmouseover="change('ge');"id="ge"class="menu">Good & Evil</span>
+				<img onclick="renew();" id="small"src = "images/troll small.jpg" />
+			</div>
+			<div id="scrollcontainer">
+				<div id="titletext">Hover over the chapters to read about trolls</div>
+			<img id = "scroll" src = "images/scroll.png" />
+            <img id = "rip" src = "images/rip.png" />
+			<div id="nametext"class="text">
+				<h2>A word about names:</h2>
+				Trolls don’t have names.  They are very imitative creatures and identify each other by mimicking the actions and voices of others.  That is to say, if I were at the dinner table, I might say, “Jeremiah, please pass the beans.”  Jeremiah, of course, would know that I was talking to him because I had addressed him by name.  A Troll, on the other hand, might say, “Please pass the beans.”  The Troll being addressed would know that he or she was being addressed by the tone of voice of the first Troll.  It’s almost as if Jeremiah had a beaky nose and a waddly neck, like a turkey.  Rather than addressing him by name, I might ask him to pass the beans by saying just that, but in a gobble-gobble sort of voice.  Everyone in the room would then know that I was addressing Jeremiah because I had used a voice that reminded them all of a turkey.  To Trolls, this was not something that was used to demean or offend.  Trolls, unlike humans, are very aware of their own characteristics and recognize them when they are imitated.  This is one of their great strengths.  They do not engage in verbal humor and, in fact, find language in its verbal form to be most cumbersome.
+			</div>
+			<div id="eldertext"class="text">
+				<h2>A word about Elders:</h2>
+				Trolls don’t have a word for Elder.  They also don’t have a word for Leader.  Trolls that lead generally do so by mutual agreement of all of the Trolls involved.  Since the nature of a Troll’s pride revolves around a job well done, a Troll is more inclined to want a job at which he or she will succeed, rather than a job that is considered classically powerful.  The leaders of a Troll community are generally the eldest, but do not necessarily lead by default.  Also, the word to describe them roughly translates into parents.  Decisions that are made for the community are usually made by the parents with the largest families.
+			</div>
+			<div id="schooltext" class="text">
+				<h2>A word about school:</h2>
+				Trolls have never believed in formal education in the classroom.  In fact, it was a concept of which they had not conceived and were quite confused by the gathering of small humans in rooms so that they might have to suffer through the verbal lectures of a single larger human.  Trolls, instead educate their young by including their young in their daily lives.  As a part of the adult community, the children tend to learn more than they might from a lecture.  They are shown things and encouraged to participate in carrying out important responsibilities.  As a Troll matures, he or she will determine what interests him or her.  At that time, a young Troll may leave his or her natural parents during the day and spend time with another Troll who is an expert or master at the occupation of interest.  It is rare that these apprenticeships fail.  Trolls are very steadfast.  Even the young tend to stick with their decisions.
+			</div>
+			<div id="getext"class="text">
+				<h2>A word about good and evil:</h2>
+				Good trolls have bright yellow eyes.  Evil trolls have smoldering red eyes.  That’s simple to remember and a good rule of thumb.  But, like humans, trolls are individuals.  The genetic stuff that determines the color of the eyes cannot also determine the nature of the personality.  There is something in Trolls which directs their instinctive behavior.  The conscience, which is really the determination between good and evil, is stronger in the yellow-eyed Trolls than it is in the red-eyed trolls.  However, a red-eyed Troll can very well overcome whatever it is that might make him or her instinctively act evilly or vice versa.  Just because a yellow-eyed Troll might feel bad about skinning a cat, that won’t necessarily stop him from doing it if it’s something he wants to do.
+			</div>
+		</div>
+	</body>
+</html>

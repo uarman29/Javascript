@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head>
+		<title>Images</title>
+		<style> 
+		body
+		{
+		background-color:black;
+		}
+		div
+		{
+		color:white;
+		text-align:center;
+		font-weight:bold;
+		font-style:italic;
+		}
+		img
+		{
+		height:100px;
+		}
+		</style>
+		<script>
+		function initialize()
+		{
+		pileElement1 = document.getElementById("pile1");
+		pileElement2 = document.getElementById("pile2");
+		pileElement3 = document.getElementById("pile3");
+		turnElement = document.getElementById("turn");
+		unkElement= document.getElementById("unk");
+		pile1 = 2;
+		pile2 = 3;
+		pile3 = 3;
+		turn = false;
+		}
+		function pileA(remover)
+		{
+		
+		if(pile1>=remover)
+		{
+		pile1 -= remover;
+		}
+		else{
+		turn=true;
+		}
+		}
+		function pileB(remover)
+		{
+		if(pile2>=remover)
+		{
+		pile2 -= remover;
+		}
+		else{
+		turn=true;
+		}
+		}
+		function pileC(remover)
+		{
+		if(pile3>=remover)
+		{
+		pile3 -= remover;
+		}
+		else{
+		turn=true;
+		}
+		}
+		function yourturn()
+		{
+		turn=!turn;
+		}
+		function display()
+		{
+	
+		
+		if(turn==true && pile1 > pile2 && pile1 > pile3)
+				{
+				pile1 -= 1;
+				pileElement1.innerHTML= pile1;
+				unkElement.innerHTML = "Me take one stone from pile 1";
+				turn=false;
+				}
+			
+		else if(turn==true && pile1 > pile2 && pile1 == pile3)
+				{
+				pile1 -= 1;
+				pileElement1.innerHTML= pile1;
+				unkElement.innerHTML = "Me take one stone from pile 1";
+				turn=false;
+				}
+		else if(turn==true &&pile2 > pile3 && pile2 > pile1)
+				{
+				pile2 -= 1;
+				buttonclick=false;
+				pileElement2.innerHTML= pile2;
+				unkElement.innerHTML = "Me one stone from pile 2";
+				turn=false;
+				}
+		else if(turn==true &&pile2 > pile3 && pile2 == pile1)
+				{
+				pile2 -= 1;
+				buttonclick=false;
+				pileElement2.innerHTML= pile2;
+				unkElement.innerHTML = "Me take one stone from pile 2";
+				turn=false;
+				}
+		else if(turn==true && pile3 > pile2 && pile3 > pile1)
+				{
+				pile3 -= 1;
+				buttonclick=false;
+				pileElement3.innerHTML= pile3;
+				unkElement.innerHTML = "Me take one stone from pile 3";
+				turn=false;
+				}
+		else if(turn==true && pile3 > pile1 && pile3 == pile2)
+				{
+				pile3 -= 1;
+				buttonclick=false;
+				pileElement3.innerHTML= pile3;
+				unkElement.innerHTML = "Me take one stone from pile 3";
+				turn=false;
+				}
+		else if(turn==true && pile3 == pile1 && pile3 == pile2 && pile1>1)
+				{
+				pile3 -= 1;
+				buttonclick=false;
+				pileElement3.innerHTML= pile3;
+				unkElement.innerHTML = "Me take one stone from pile 3";
+				turn=false;
+				}
+				
+		if (turn == true && pile3 == 0 && pile2 == 0 && pile1==0)
+			{
+			unkElement.innerHTML = "I WIN";
+			}
+		if (turn == false && pile3 == 0 && pile2 == 0 && pile1==0)
+			{
+			unkElement.innerHTML = "YOU WIN";
+			}
+		
+		
+		
+		if(pile1 < 0)
+				{
+				pileElement1.innerHTML = 0;
+				pile1 = 0;
+				}
+		if(pile2 < 0)
+				{
+				pileElement2.innerHTML = 0;
+				pile2 = 0;
+				}
+		if(pile3 < 0)
+				{
+				pileElement3.innerHTML = 0;
+				pile3 = 0;
+				}
+			pileElement3.innerHTML = pile3;
+			pileElement1.innerHTML = pile1;
+			pileElement2.innerHTML = pile2;
+		}
+
+
+		</script>
+		
+	</head>
+	<body onload = "initialize();">
+	<div>
+	<img src = "images.jpg"/>
+	<img style="height:50px;" src = "Rock.jpg"/>
+	<img src = "index.jpg"/>
+	
+	</div>
+	
+	<div>
+	Rules of the game:Each turn you will take 1, 2, or 3 stones from any one pile and so will Unk and Globb.
+	Whoever ends up taking the last stone will lose
+	</div>
+	<div id = "unk">
+	Unk says: Globb want to go first. Me take 1 stone from pile 1.
+	
+	</div>
+	<div id = "pile1">
+	2
+	</div>
+	
+	
+	
+	<div>
+	<button onclick = "pileA(1); yourturn(); display();" >Take 1</button>
+	<button onclick = "pileA(2);  yourturn(); display();">Take 2</button>
+	<button onclick = "pileA(3);  yourturn(); display();">Take 3</button>
+	</div>
+	
+	
+	<div id = "pile2">
+	3
+	</div>
+	
+	
+	<div>
+	<button onclick = "pileB(1);  yourturn(); display();" >Take 1</button>
+	<button onclick = "pileB(2);  yourturn(); display();">Take 2</button>
+	<button onclick = "pileB(3);  yourturn(); display();">Take 3</button>
+	</div>
+	
+	
+	<div id = "pile3">
+	3
+	</div>
+	<div>
+	<button onclick = "pileC(1);  yourturn(); display();" >Take 1</button>
+	<button onclick = "pileC(2);  yourturn(); display();">Take 2</button>
+	<button onclick = "pileC(3);  yourturn(); display();">Take 3</button>
+	</div>
+	
+	</body>
+
+	
+	
+</html>

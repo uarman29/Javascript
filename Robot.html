@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head>
+		<title> HTML Elements as Objects </title>
+		<style> 
+		body
+		{
+		background-color:black;
+		}
+		div,p
+		{color:white;
+		text-align:center;
+		font-weight:bold;
+		font-style:italic;
+		}
+	
+		</style> 
+		
+		<script> 
+		
+		function initialize()
+			{
+			powerElement = document.getElementById("power");
+			speedElement = document.getElementById("speed");
+			energyElement = document.getElementById("energy");
+			activeElement = document.getElementById("active");
+			attackElement = document.getElementById("attack");
+			batteryElement = document.getElementById("battery");
+			battery = "Solar"
+			powerLvl = 0;
+			speedLvl = 0;
+			energyLvl = 0;
+			roboton = false
+			attackon = false
+			}
+			
+			function modifybattery(modifier)
+			{
+			battery = modifier;
+			}
+			function modifyPower(modifier)
+			{powerLvl += modifier;}
+			
+			function modifySpeed(modifier)
+			{speedLvl += modifier;}
+			
+			function modifyEnergy(modifier)
+			{energyLvl += modifier;}
+			
+			
+			function togglepower()
+			{roboton = !roboton
+			display();
+			}
+			
+			function toggleattack()
+			{
+			attackon=!attackon
+			display();
+			}
+			
+		function display()
+			{
+			if(roboton)
+				{
+				activeElement.innerHTML = "ON";
+				}
+				else
+				{
+				activeElement.innerHTML = "OFF";
+				}
+				
+				if(attackon)
+				{
+				attackElement.innerHTML = "ON";
+				}
+				else
+				{
+				attackElement.innerHTML = "OFF";
+				}
+			
+			powerElement.innerHTML = powerLvl;
+			if(powerLvl < 0)
+			{
+			powerElement.innerHTML = 0;
+			powerLvl = 0;
+			}
+			speedElement.innerHTML = speedLvl;
+			if(speedLvl < 0)
+			{
+			speedElement.innerHTML = 0;
+			speedLvl = 0;
+			}
+			energyElement.innerHTML = energyLvl;
+			if(energyLvl < 0)
+			{
+			energyElement.innerHTML = 0;
+			energyLvl = 0;
+			}
+			batteryElement.innerHTML = battery;
+			
+			}
+		</script> <!-- Javascript goes in here -->
+		
+	</head>
+	<body onload = "initialize();">
+	<p>
+	<div id = "active">
+	OFF
+	</div>
+	<div>
+	<button onclick = "togglepower();">POWER </button>
+	</div>
+	</p>
+	<p>
+	Battery Type:
+	<div id = "battery">
+	Solar
+	</div>
+	<div>
+	<button onclick = "modifybattery('Solar');display()";>Solar</button>
+	<button onclick ="modifybattery('Electric');display()"; >Electric</button>
+	<button onclick = "modifybattery('NUCLEAR');display()";>NUCLEAR</button>
+	</div>
+	</p>
+	<p>
+	PowerLVL:
+	<div id = "power">
+	0
+	</div>
+	<div>
+	<button onclick = "modifyPower(1); display();">Power Up</button>
+	<button onclick = "modifyPower(-1); display();">Power Down</button>
+	</div>
+	</p>
+	<p>
+	Speed(m/s):
+	<div id = "speed"> 
+	0
+	</div>
+	<div>
+	<button onclick = "modifySpeed(1);display();">Speed Up</button>
+	<button onclick = "modifySpeed(-1);display();">Speed Down</button>
+	</div>
+	</p>
+	<p>
+	Energy: 
+	<div id = "energy">   
+	0
+	</div>
+	<div>
+	<button onclick = "modifyEnergy(1);display();">Energy Up</button>
+	<button onclick = "modifyEnergy(-1);display();">Energy Down</button>
+	</div>
+	</p>
+
+	<div id = "attack">
+	OFF
+	</div>
+	<div>
+	<button onclick = "toggleattack();">ATTACK MODE </button>
+	</div>
+	</p>
+	
+	
+	
+	
+	
+	</body>
+</html>
+	

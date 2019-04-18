@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> Black and Red </title>
+		<style> 
+		body
+		{
+		font-family:papyrus;
+		}
+		#back
+		{
+		position:absolute;
+		height:100%;
+		width:100%;
+		top:-1px;
+		left:-1px;
+		z-index:-1;
+		}
+		#choicecontainer
+		{
+		position:absolute;
+		top:2%;
+		left:33%;
+		width:31%;
+		height:80%;
+		}
+		#roll
+		{
+		position:absolute;
+		left:25%;
+		width:50%;
+		height:10%;
+		font-size:200%;
+		border-radius:50px;
+		}
+		#try1
+		{
+		position:absolute;
+		top:60%;
+		left:0%;
+		width:49%;
+		height:10%;
+		font-size:80%;
+		border-radius:50px;
+		}
+		#try2
+		{
+		position:absolute;
+		top:60%;
+		left:50%;
+		width:49%;
+		height:10%;
+		font-size:80%;
+		border-radius:50px;
+		}
+		#try3
+		{
+		position:absolute;
+		top:70%;
+		left:0%;
+		width:49%;
+		height:10%;
+		font-size:80%;
+		border-radius:50px;
+		}
+		#try4
+		{
+		position:absolute;
+		top:70%;
+		left:50%;
+		width:49%;
+		height:10%;
+		font-size:80%;
+		border-radius:50px;
+		}
+		#try5
+		{
+		position:absolute;
+		top:80%;
+		left:25%;
+		width:49%;
+		height:10%;
+		font-size:120%;
+		border-radius:50px;
+		}
+		#redroll
+		{
+		position:absolute;
+		top:10%;
+		left:12%;
+		font-size:200%;
+		color:red;
+		}
+		#blackroll
+		{
+		position:absolute;
+		top:10%;
+		right:10%;
+		font-size:200%;
+		}
+		#red
+		{
+		position:absolute;
+		top:20%;
+		left:20%;
+		font-size:500%;
+		color:red;
+		}
+		#black
+		{
+		position:absolute;
+		top:20%;
+		right:20%;
+		font-size:500%;
+		}
+		#compcontainer
+		{
+		position:absolute;
+		left:0%;
+		width:25%;
+		height:80%;
+		}
+		#compredlabel
+		{
+		position:absolute;
+		width:90%;
+		border:solid;
+		font-size:200%;
+		top:0%;
+		left:10%;
+		text-align:center;
+		color:red;
+		}
+		#compblacklabel
+		{
+		position:absolute;
+		width:90%;
+		border:solid;
+		font-size:200%;
+		left:10%;
+		top:40%;
+		text-align:center;
+		}
+		#compRedPile
+		{
+		position:absolute;
+		width:90%;
+		font-size:700%;
+		left:10%;
+		top:10%;
+		text-align:center;
+		color:red;
+		}
+		#compBlackPile
+		{
+		position:absolute;
+		width:90%;
+		font-size:700%;
+		left:10%;
+		top:50%;
+		text-align:center;
+		}
+		#playercontainer
+		{
+		position:absolute;
+		width:25%;
+		height:80%;
+		left:70%;
+		}
+		#playerredlabel
+		{
+		position:absolute;
+		width:90%;
+		border:solid;
+		font-size:200%;
+		top:0%;
+		left:10%;
+		text-align:center;
+		color:red;
+		}
+		#playerblacklabel
+		{
+		position:absolute;
+		width:90%;
+		border:solid;
+		font-size:200%;
+		top:40%;
+		left:10%;
+		text-align:center;
+		}
+		#userRedPile
+		{
+		position:absolute;
+		width:90%;
+		font-size:700%;
+		left:10%;
+		top:10%;
+		text-align:center;
+		color:red;
+		}
+		#userBlackPile
+		{
+		position:absolute;
+		width:90%;
+		font-size:700%;
+		left:10%;
+		top:50%;
+		text-align:center;
+		}
+		#result
+		{
+		position:absolute;
+		top:40%;
+		border:dotted;
+		width:100%;
+		height:13%;
+		font-size:300%;
+		text-align:center;
+		display:none;
+		}
+		#restart
+		{
+		position:absolute;
+		width:70%;
+		font-size:150%;
+		left:35%;
+		top:80%;
+		text-align:center;
+		}
+		button
+		{
+		font-family:copperplate gothic light;
+		font-weight: bold;
+		}
+		</style> 
+		<script src = "utilities1.js"></script>
+		<script> 
+		function initialize()
+		{
+		redDie=0,blackDie=0,rollcheck=0;
+		userBlack=10,userRed=10;
+		compBlack=10,compRed=10;
+		turncheck=0;
+		game=0;
+		gameover=0;
+		turnctr=0;
+		userBlackPileElement=document.getElementById("userBlackPile");
+		userRedPileElement=document.getElementById("userRedPile");
+		compBlackPileElement=document.getElementById("compBlackPile");
+		compRedPileElement=document.getElementById("compRedPile");
+		blackDice=document.getElementById("black");
+		redDice=document.getElementById("red");
+		resultElement=document.getElementById("result");
+		resultElement.style.display="none";
+		for(var i=1;i<5;i++)
+		{
+			buttonid=document.getElementById("try"+i);
+			buttonid.style.color="black";
+		}
+		display();
+		}
+		function rollDie()
+		{
+			if(turncheck !=1 && rollcheck==0 && gameover==0)
+			{
+				redDie=getRandomInteger(1,6);
+				blackDie=getRandomInteger(1,6);
+				rollcheck=1;
+			}
+			display();
+				
+		}
+		function option(choice,player)
+		{
+			if(player==1)
+			{
+				if(rollcheck==1 && turncheck==0 && gameover==0)
+				{
+					if(choice==1)
+					{
+						userRed=userRed-redDie;
+						compBlack=compBlack+blackDie;
+					}
+					if(choice==2)
+					{
+						userRed=userRed+redDie;
+						compBlack=compBlack-blackDie;
+					}
+					if(choice==3)
+					{
+						userBlack=userBlack-blackDie;
+						compRed=compRed+redDie;
+					}
+					if(choice==4)
+					{
+						userBlack=userBlack+blackDie;
+						compRed=compRed-redDie;
+					}
+					rollcheck=0;
+					turncheck=1;
+				}
+			}
+			if(player==2)
+			{
+					if(choice==1)
+					{
+						compRed=compRed-redDie;
+						userBlack=userBlack+blackDie;
+					}
+					if(choice==2)
+					{
+						compRed=compRed+redDie;
+						userBlack=userBlack-blackDie;
+					}
+					if(choice==3)
+					{
+						compBlack=compBlack-blackDie;
+						userRed=userRed+redDie;
+					}
+					if(choice==4)
+					{
+						compBlack=compBlack+blackDie;
+						userRed=userRed-redDie;
+					}
+					rollcheck=0;
+			}
+			if(userRed<0)
+				userRed=0;
+			if(userBlack<0)
+				userBlack=0;
+			if(compRed<0)
+				compRed=0;
+			if(compBlack<0)
+				compBlack=0;
+			wincon();
+			display();
+		}
+		function compturn()
+		{
+			if(turncheck==1 && gameover==0)
+			{
+				if(turnctr==1)
+				{
+					buttonid.style.color="black";
+				}
+				turncheck=2;
+				rollDie();
+				rollcheck=0;
+				ranchoice=2;
+				if(userRed>compRed)
+				{
+					ranchoice=4;
+				}
+				option(ranchoice,2);
+				buttonid=document.getElementById("try"+ranchoice);
+				buttonid.style.color="red";
+				turncheck=0;
+				turnctr=1;
+				turncheck=0;
+				display();
+			}
+		}
+		function wincon()
+		{
+			if(userBlack==0 || compBlack==0)
+			{
+				resultElement.style.display="inline";
+				gameover=1;
+				if(userRed>compRed)
+				{
+					game=1;
+				}
+				if(userRed<compRed)
+				{
+					game=2;
+				}
+				if(userRed==compRed)
+				{
+					game=3;
+				}
+			}
+		}
+		function display()
+		{
+		
+		userBlackPileElement.innerHTML=userBlack;
+		userRedPileElement.innerHTML=userRed;
+		compBlackPileElement.innerHTML=compBlack;
+		compRedPileElement.innerHTML=compRed;
+		redDice.innerHTML=redDie;
+		blackDice.innerHTML=blackDie;
+			if(game==1)
+			{
+				resultElement.innerHTML="YOU WIN";
+			}
+			else
+			{ 	if(game==2)
+				{
+					resultElement.innerHTML="YOU LOSE";
+				}
+				else
+				{	if (game==3)
+					{
+						resultElement.innerHTML="ITS A TIE";
+					}
+				
+				}
+			}
+		
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<img id="back" src="images/backing4.jpg" />
+	<div>
+	<div id="compcontainer">
+	<span id="compredlabel">Computer Red</span><span id="compRedPile">10</span><span id="compblacklabel">Computer Black</span><span id="compBlackPile">10</span>
+	</div>
+	<div id="playercontainer">
+	<span id="playerredlabel">Player Red</span><span id="userRedPile">10</span><span id="playerblacklabel">Player Black</span><span id="userBlackPile">10</span>
+	<button id="restart"onclick="initialize();">Restart?</button>
+	</div>
+	<div id="choicecontainer">
+	<button id="roll"onclick="rollDie()">Roll Dice</button>
+	<span id="redroll">Red Die</span><span id="red">0</span><span id="blackroll">Black Die</span><span id="black">0</span>
+	<button id="try5"onclick="compturn();">END TURN</button>
+	<button class="buttons2" id="try1"onclick="option(1,1);">Remove Player Red - Add Computer Black</button>
+	<button class="buttons2" id="try2"onclick="option(2,1);">Add Player Red - Remove Computer Black</button>
+	<button class="buttons2" id="try3"onclick="option(3,1);">Remove Player Black - Add Computer Red</button>
+	<button class="buttons2" id="try4"onclick="option(4,1);">Add Player Black  - Remove Computer Red</button>
+	<div id="result"></div>
+	</div>
+	</div>
+	</body>
+
+	
+	
+</html>

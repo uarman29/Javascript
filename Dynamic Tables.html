@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+
+<html>
+	<head>
+		<title>Tables</title>
+		
+		<style>
+			body, button
+			{
+				font:18pt calibri;
+			}
+			 
+			button
+			{
+				float:right;
+			}
+			
+			table
+			{
+				/*
+					There are 3 border properties.  The color will default to black, but you must specify the style and the width.
+					
+					The border styles are dotted, dashed, solid, double, ridge, outset, inset, groove, and none.
+					The border widths are thin, medium, thick, and a number followed by px, in, or cm.
+					
+					You can set individual borders using border-left, border-right, border-top, and border-bottom.
+					
+					The border shorthand sets the style, width, and color at once.
+				*/
+				border-style:outset;
+				border-width:thick;
+				border-color:grey;
+				
+				/*
+					Centers all of the text inside the table.
+				*/
+				text-align:center;
+				
+				width:75%;
+				
+				/*
+					margins are used to push an element over.  You can set margin-top, margin-bottom, margin-left, or margin-right.  You can use the shorthand to set them with 2, 3, or 4 values at once.
+					
+					"auto" gives the browser the ability to set the margins for you.
+					
+					In this case, setting all of the margins to auto tells the browser to put equal space on all sides, centering the table.
+				*/
+				margin:auto;
+			}
+			
+			td
+			{
+				border-style:solid;
+				border-width:thin;
+				
+				padding:5px;
+			}
+		</style>
+		
+		<script>
+			function initialize()
+			{
+				theTable = document.getElementById("mytbl");
+				leftColumn = document.getElementById("leftcol");
+				
+				numRows = 2;
+			}
+			
+			function addRowToTable()
+			{
+				numRows++;
+				
+				/*
+					A new row can be added to a table by calling the insertRow() function, which is a member of the table object.  The function returns a reference to the new row that was created.
+					
+					Calling it without a parameter inserts the row at the end of the table, however you can pass a number in to insert a row into the middle of the table.
+				*/
+				newRow = theTable.insertRow();
+				
+				/*
+					I've created a function to add cells to the row.
+				*/
+				addCellToRow(newRow, 1);
+				addCellToRow(newRow, 2);
+				
+				leftColumn.rowSpan = numRows;
+			}
+			
+			/*
+				addCellToRow
+				
+				Parameters
+				theRow - a row object to which the new cell will be added.
+				
+				cellNum - the column number of the cell
+			*/
+			function addCellToRow(theRow, cellNum)
+			{
+				/*
+					The insertCell() function belongs to the row object and works almost exactly the same way as does insertRow().  It creates a new cell, adds it to the row, and returns a reference to the cell object.
+				*/
+				newCell = theRow.insertCell();
+				newCell.innerHTML = "(row " + numRows + ", col " + cellNum + ")";
+			}
+			
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+		<!--
+		Tables are gridded elements on your web page.  They are built using rows and cells(which form columns).
+		
+		All table elements are put inside of a <table></table> tag.
+		
+		Rows are created using the <tr></tr> tag.
+		
+		Inside the rows, use the <td></td> tag to create cells.  Inside the cells, you add data, which can be text, numbers, or even other elements.
+		-->
+		<table id = "mytbl">
+			<tr>
+				<!--
+				colspan and rowspan are used to extend a cell over multiple columns or rows.  The attribute has a numeric value which specifies the number of  columns or rows over which you want to span.
+				
+				Be careful using these attributes as using them generally means that the number of cells in each row is off balance.  Placement of cells which use these attributes can be difficult.
+				-->
+				<th colspan = "3">
+					Rows and Columns
+					<button onclick = "addRowToTable();">Add Row</button>
+				</th>
+			</tr>
+
+			<tr>
+				<td id = "leftcol" rowspan = "2">The Column</td>
+				<td>row 1, col 1</td>
+				<td>row 1, col 2</td>
+			</tr>
+			
+			<tr id = "lastrow">
+				<td>row 2, col 1</td>
+				<td>row 2, col 2</td>
+			</tr>
+		</table>
+	</body>
+</html>

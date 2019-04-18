@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> Stage 9</title>
+		<style>
+		p,h1,img
+		{
+		text-align:center;
+		}
+		#red 
+		{
+		height:100px;
+		width:100px;
+		background-color:red;
+		border-radius:50px;
+		}
+		#yellow
+		{
+		height:50px;
+		width:50px;
+		background-color:yellow;
+		border-radius:50px;
+		text-align:center;
+		display:none;
+		}
+		#green 
+		{
+		height:100px;
+		width:100px;
+		background-color:green;
+		border-radius:50px;
+		}
+	
+		</style> 
+		
+		<script> 
+		function run()
+		{
+		textElement=document.getElementById("text");
+		textElement.innerHTML="It seems like you have found my hidden button I will praise you for that but......";
+		buttonElement=document.getElementById("button");
+		buttonElement2=document.getElementById("yellow");
+		buttonElement2.style.display="inline";
+		buttonElement.style.display="none";
+		}
+		</script> 
+		
+	</head>
+	<body>
+	<p>
+	<a href="failpage.html"><button id="red"></button></a>
+	<a href="failpage.html"><button id="green"></button></a>
+	<a href="buttoncode10.html"><button id="yellow"></button></a>
+	<img id="button" onmouseover="run();" src="bluebutton.png"/>
+	</p>
+	<h1 id="text">
+	Well what will you do now?
+	</h1>
+
+	</body>
+
+	
+	
+</html>

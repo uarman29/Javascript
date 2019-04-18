@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		div{
+		text-align:center;
+		font-size:36pt;
+		font-family:cosmic sands;
+		}
+		button 
+		{
+		height:100px;
+		width:100px;
+		background-color:red;
+		border-radius:1000px;
+		}
+	
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+			comments=["HOW DID YOU GET PAST MY SORCERY!","DO NOT THINK THAT YOU HAVE DEFEATED ME JUST YET","INTIMIDATING AM I NOT?","YOU MAY HAVE DEFEATED ME BUT A GREATER TRIAL AWAITS YOU"];
+			punElement=document.getElementById("pun");
+			ctr=0;
+			linkElement=document.getElementById("link");
+			butElement=document.getElementById("but");
+			ctr1=0;
+		}
+		function commentpump()
+		{
+			if(ctr1==0)
+			{
+				ctr1=1;
+				if(ctr==2)
+				{
+				butElement.style.height="600px";
+				butElement.style.width="600px";
+				}
+				if(ctr==3)
+				{
+				butElement.style.height="50px";
+				butElement.style.width="50px";
+				}
+				if(ctr==comments.length)
+				{
+				linkElement.setAttribute('href',"mousegame/mouserun.html");
+				linkElement.appendChild(butElement);
+				}
+				punElement.innerHTML=comments[ctr];
+				ctr++;
+				setTimeout(timestop,500);
+			}
+		}
+		function timestop()
+		{
+			ctr1=0;
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<div>
+	<a id="link">
+	<button id="but" onclick="commentpump();"></button>
+	</a>
+	<div>
+	<div id="pun">WHAT?!?!?!</div>
+	</body>
+
+	
+	
+</html>

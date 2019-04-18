@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		#intro,#roundcounter
+		{
+		font-size:24pt;
+		text-align:center;
+		}
+		#StartButton
+		{
+			margin-top:20px;
+		}
+		.color
+		{
+		border-radius:100px;
+		height:100px;
+		width:100px;
+		}
+		body
+		{
+		text-align:center;
+		}
+		</style> 
+		<script src="utilities1.js"></script>
+		<script>
+		function initialize()
+		{
+			colors=["firebrick","green","blue","khaki"];
+			newcolors=["magenta","springgreen","cyan","yellow"];
+			roundElement=document.getElementById("roundcounter");
+			currentPattern=[];
+			newcolorPattern=[];
+			ctr=0;
+			ctr2=0;
+			guessctr=0;
+			speed=100;
+			newPattern();
+		}
+		function newPattern()
+		{
+			rannum=getRandomInteger(0,colors.length-1);
+			currentPattern.push(colors[rannum]);
+			newcolorPattern.push(newcolors[rannum]);
+			roundcounter.innerHTML="Round:"+currentPattern.length;
+			for(var i=0;i<4;i++)
+			{
+				buttonElement=document.getElementById(colors[i]);
+				buttonElement.disabled=true;
+			}
+			colorChange=setInterval(displayPattern,(speed*3));
+		}
+		function displayPattern()
+		{
+			currentButton=document.getElementById(currentPattern[ctr]);
+			currentButton.style.backgroundColor=newcolorPattern[ctr];
+			colorFix=setTimeout(fixcolor,speed,ctr);
+			ctr++;
+			if(ctr==currentPattern.length)
+			{
+			ctr=0;
+			clearInterval(colorChange);
+				for(var i=0;i<4;i++)
+				{
+					buttonElement=document.getElementById(colors[i]);
+					buttonElement.disabled=false;
+				}
+			}
+		}
+		function fixcolor(num)
+		{
+			tempButton=document.getElementById(currentPattern[num]);
+			tempButton.style.backgroundColor=currentPattern[num];
+			clearTimeout(colorFix);
+		}
+		function guessPattern(color)
+		{
+			if(color==currentPattern[guessctr])
+			{
+				guessctr++;
+				if(guessctr==currentPattern.length)
+				{
+					WIN();
+				}
+			}
+			else
+			{
+				LOSE();
+			}
+		}
+		function WIN()
+		{
+			alert("NEXT ROUND");
+			newPattern();
+			if(currentPattern.length>5)
+			{
+				speed=200;
+			}
+			if(currentPattern.length>10)
+			{
+				speed=100;
+			}
+			guessctr=0;
+		}
+		function LOSE()
+		{
+			alert("YOU LOSE");
+			for(var i=0;i<4;i++)
+			{
+				buttonElement=document.getElementById(colors[i]);
+				buttonElement.disabled=true;
+			}
+		}
+		</script> 
+		
+	</head>
+	<body>
+	<div id="intro">LETS PLAY SIMON</div>
+	<div id="roundcounter">Round:0</span></div>
+	<div  id="buttoncontainer">
+	<button class="color"id="firebrick"style="background-color:firebrick;"onclick="guessPattern('firebrick')">RED</button>
+	<button class="color"id="green"style="background-color:green;"onclick="guessPattern('green')">GREEN</button>
+	<button class="color"id="blue"style="background-color:blue;"onclick="guessPattern('blue')">BLUE</button>
+	<button class="color"id="khaki"style="background-color:khaki;"onclick="guessPattern('khaki')">YELLOW</button>
+	</div>
+	<div>
+		<button id="StartButton" onclick ="initialize();">START?</button>
+	</div>
+	</body>
+
+	
+	
+</html>

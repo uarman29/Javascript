@@ -1,0 +1,49 @@
+CSS 
+shorthand{:top right bottom left}
+backgrounds()
+	background-color:red;
+	background-image: url("image name");
+	
+borders()
+	border-style:none,dotted,dashed,solid,double,groove,ridge,inset,outset;
+	border-style: dotted dashed solid double;
+	border-width: 5px;
+	border-width: 5px 20px 10px 15px;
+	border-color: red;
+	border-color: red green blue yellow;
+	border: 5px solid red;
+	
+margin()
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin: 100px 200px 150 px 125px;
+	margin: auto;---- horizonally center
+	
+padding()
+	padding: 50px 100px 75px 50px;
+
+height:50px;
+width:50px;
+
+text()
+	color:blue;
+	text-align: center,left,right,justify--equal lines;
+	text-decoration:none,underline,line-through;
+	
+fonts()
+	font-style: normal,italic;
+	font-size: 50px;
+	font-weight:normal,bold;
+	font:bold 36pt arial;
+	
+selectors()
+.classname--all elements with class+"classname"
+#id--element with id("id")
+div p -- all p inside div
+div>p -- all p elements with div parents
+div + p -- all p elements right after div
+
+
+	

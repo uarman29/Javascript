@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		#mydiv
+		{
+		position:relative;
+		width:800px;
+		height:800px;
+		border:thin solid black;
+		overflow:scroll;
+		}
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			
+		}
+		function startDrag(e)
+		{
+			e.dataTransfer.setData("source",e.target.src);
+		}
+		function allowDrag(e)
+		{
+			e.preventDefault();
+		}
+		function dropElement(e)
+		{
+			e.preventDefault();
+			var imgSrc=e.dataTransfer.getData("source");
+			newImg=document.createElement("img");
+			newImg.src=imgSrc;
+			newImg.style.position="absolute";
+			newImg.style.left=e.clientX+"px";
+			newImg.style.top=e.clientY+"px";
+			e.target.appendChild(newImg);
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<div ondragover="allowDrag(event);"ondrop="dropElement(event);"id="mydiv"></div>
+	<img ondragstart="startDrag(event);"draggable="true"src="images/1-3.png"/>
+	</body>
+
+	
+	
+</html>

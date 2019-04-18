@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> Drop Down Menu </title>
+		<style> 
+		*
+		{
+			/*border:thin solid red;*/
+		}
+		span.topmenu
+		{
+			font:bold 18pt arial;
+			display:inline-block;
+			width:22%;
+			vertical-align:top;
+		}							
+		div.menucontainer
+		{
+			margin:auto;
+			text-align:center;
+		}
+		span.dropdown
+		{
+			display:none;
+		}
+		</style> 
+		
+		<script>
+		function initialize()
+		{
+			menuContainerBox=document.getElementById("menubox");
+			menulist=menuContainerBox.getElementsByTagName("span");
+			menulistclass=menuContainerBox.getElementsByClassName("topmenu");
+		}
+		function show(parentIdx,displayvalue)
+		{
+			sublist=menulistclass[parentIdx].getElementsByTagName("span");
+			for(var i=0;i<sublist.length;i++)
+			{
+			sublist[i].style.display=displayvalue;
+			}
+			
+		}
+		function bye()
+		{
+			for(var i=0;i<sublist.length;i++)
+			{
+			sublist[i].style.display="none";
+			}
+		}
+		
+		
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+		<div class="menucontainer" id="menubox">
+			<span class="topmenu" onmouseout="show(0,'none');"onmouseover="show(0,'inline')";>
+				Menu 1<br/>
+				<span class="dropdown">M1<br/></span>
+				<span class="dropdown">M2<br/></span>
+				<span class="dropdown">M3<br/></span>
+				<span class="dropdown">M4<br/></span>
+				
+			</span>
+			<span class="topmenu"onmouseout="show(1,'none');"onmouseover="show(1,'inline');">
+				Menu 2<br/>
+				<span class="dropdown">M1<br/></span>
+				<span class="dropdown">M2<br/></span>
+				<span class="dropdown">M3<br/></span>
+				<span class="dropdown">M4<br/></span>
+			</span>
+			<span class="topmenu"onmouseout="show(2,'none');"onmouseover="show(2,'inline');">
+				Menu 3<br/>
+				<span class="dropdown">M1<br/></span>
+				<span class="dropdown">M2<br/></span>
+				<span class="dropdown">M3<br/></span>
+				<span class="dropdown">M4<br/></span>
+			</span>
+			<span class="topmenu"onmouseout="show(3,'none');"onmouseover="show(3,'inline');">
+				Menu 4<br/>
+				<span class="dropdown">M1<br/></span>
+				<span class="dropdown">M2<br/></span>
+				<span class="dropdown">M3<br/></span>
+				<span class="dropdown">M4<br/></span>
+			</span>
+		</div>
+	
+	</body>
+
+	
+	
+</html>

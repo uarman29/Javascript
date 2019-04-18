@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		<script src = "utilities.js"></script>
+		<script>
+		function initialize()
+		{
+			but1Element=document.getElementById("but1");
+			but2Element=document.getElementById("but2");
+			but3Element=document.getElementById("but3");
+			but4Element=document.getElementById("but4");
+			butray=[but1Element,but2Element,but3Element,but4Element];
+			for(i=0;i<4;i++)
+			{
+				butray[i].counter=0;
+			}
+		}
+		function countMe(para)
+		{
+		para.counter +=1
+		para.innerHTML=para.counter;
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<button onclick="countMe(this)"id="but1">0</button>
+	<button onclick="countMe(this)"id="but2">0</button>
+	<button onclick="countMe(this)"id="but3">0</button>
+	<button onclick="countMe(this)"id="but4">0</button>
+	</body>
+
+	
+	
+</html>

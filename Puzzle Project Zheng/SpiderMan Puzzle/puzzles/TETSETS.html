@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<!-- Zheng Lu -->
+
+<html>
+	<head>
+	
+		<link rel = "stylesheet" href = "css/TEST.css" />
+		<title>Puzzle</title>
+		
+		<script src = "utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				HEADERTEXT = "Lemur Puzzle", IMGFOLDER = "LEMUR", COMPLETEIMG = "lemur.png", IMGTYPE = ".png";		
+				MAXPIECES = 12, COLUMNS = 4,
+				
+				COMPLETEIMGVERTICALSIZE = 527, COMPLETEIMGHORIZONTALSIZE = 702,
+				UPPER = MAXPIECES, LOWER = 1, ROWS = MAXPIECES/COLUMNS;
+				
+				NONE = 0;
+				
+				headerElement = document.getElementById("header");
+				headerElement.innerHTML = HEADERTEXT;
+				
+				puzzleTableElement = document.getElementById("puzzleTable");
+				puzzleTableElement.style.visibility = "visible";
+				puzzleTableElement.style.position = "initial";
+				
+				completePicElement = document.getElementById("completePic");
+				completePicElement.style.width = "1px";
+				completePicElement.style.height = "1px";
+				
+				pieceSelectElement1 = null;
+				pieceSelectElement2 = null;
+				pieceSelectSrc1 = null;
+				pieceSelectSrc2 = null;
+				
+				clickNum = 0;
+				
+				booleanArray = [null];
+				winArray = [null];
+				
+				isShuffled = false;
+				isWin = false;
+				
+				makeRow();
+			}
+			
+			function display()
+			{
+			
+			}
+			
+			function runGame(pieceNum)
+			{
+				
+			}
+			
+			function makeRow()
+			{
+				var pieceNum = 0;
+				do
+				{
+					if (pieceNum % COLUMNS == 0)
+						newRow = puzzleTableElement.insertRow();
+						
+					pieceNum ++;
+					
+					addCellToRow(pieceNum, newRow);
+				} while (pieceNum < MAXPIECES);
+			}
+			
+			function addCellToRow(pieceNum, newRow)
+			{
+				var newCell = newRow.insertCell();
+				
+				var newImage = document.createElement("IMG");
+				newCell.appendChild(newImage);
+				
+				newImage.id = "piece" + pieceNum;
+				var newImageElement = document.getElementById(newImage.id);
+				
+				var imageWidth = COMPLETEIMGHORIZONTALSIZE/COLUMNS;
+				var imageHeight = COMPLETEIMGVERTICALSIZE/ROWS;
+				
+				newImageElement.style.width = imageWidth + "px";
+				newImageElement.style.height = imageHeight + "px";
+				
+				newImageElement.src = "css/imgs/" + IMGFOLDER + "/pic" + pieceNum + IMGTYPE;
+				newImageElement.onclick = function() {runGame(pieceNum)};
+			}
+			
+			function shuffle()
+			{
+			
+			}
+			
+		</script>	
+	</head>
+	<body onload = "initialize()">
+		<div id = "header"></div>
+		<img id = "completePic" />
+		<br />
+		<table id = "puzzleTable"></table>
+		<button onclick = "shuffle();"> Shuffle! </button>
+	</body>
+</html>

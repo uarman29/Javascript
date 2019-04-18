@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+			resultElement=document.getElementById("result");
+			deck=[];
+			ranks=["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+			suits=[" of diamonds"," of clubs"," of hearts"," of spades"];
+			for(r=0;r<13;r++)
+			{
+				for(s=0;s<4;s++)
+				{
+					card=[ranks[r],suits[s]];
+					deck.push(card);
+				}
+			}
+			display();
+		}
+		function display()
+		{
+			for(i=0;i<deck.length;i++)
+			{
+				resultElement.innerHTML +=deck[i][0] +deck[i][1]+"</br>";
+			}
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<span id="result"></span>
+	</body>
+
+	
+	
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		div
+		{
+		text-align:center;
+		}
+		img
+		{
+		height:100px;
+		width:100px;
+		position:static;
+		top:300px;
+		left:100px;
+		}
+		h1
+		{
+		text-align:center;
+		}
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+		textElement=document.getElementById("text");
+		jerryElement=document.getElementById("jerry");
+		ctr=1;
+		}
+		function run()
+		{
+			if(ctr>=50)
+			{
+			textElement.innerHTML="It seems like you tired him out";
+			return;
+			}
+			if(ctr%5==0)
+			{
+			jerryElement.style.position="absolute";
+			jerryElement.style.left="400px";
+			}
+			else
+			{
+				if(ctr%3==0)
+				{
+				jerryElement.style.position="static";
+				jerryElement.style.left="200px";
+				}
+				else
+				{
+					if (ctr%2==0)
+					{
+					jerryElement.style.position="relative";
+					jerryElement.style.top="200px";
+					}
+					if (ctr%2==1)
+					{
+					jerryElement.style.position="absolute";
+					jerryElement.style.top="500px";
+					jerryElement.style.left="300px";
+					}
+				}
+			}
+			ctr++;
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<div>
+	<h1 id="text">
+	CAN YOU CATCH THE FASTEST WARRIOR IN THE UNIVERSE?
+	</h1>
+	<a href="buttonpress.html">
+	<img id="jerry"onmouseover="run();"src="jerry.png"/>
+	</a>
+	</div>
+
+	</body>
+
+	
+	
+</html>

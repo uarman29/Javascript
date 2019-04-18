@@ -1,0 +1,51 @@
+body
+{
+	text-align: center;
+	background-image: url("puzzles/css/imgs/bg1.jpg");
+	margin: 0px;
+}
+
+a
+{
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+}
+
+img
+{
+	width: 150px;
+	height: 100px;
+}
+
+td, th
+{
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+	
+	border-bottom: solid #006666 1px;
+}
+
+#LINKS
+{
+	margin: 0px auto;
+	margin-top: 7px;
+	width: 60%;
+	border: solid #006666 2px;
+	background-color: #00cccc;
+}
+
+#HEADER
+{
+	font-size: 50px;
+	color: white;
+	border: solid #006666 2px;
+	background-color: #00cccc;
+}
+
+.firstCol
+{
+	border-right: solid #006666 1px;
+	background-color: #80ffe5;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		
+		<script>
+			function initialize()
+			{
+				str="Mississippi";
+				alert(str.length);
+				c=str.charAt(5);// gets character at index 5
+				alert(c);
+				a=str.charCodeAt(5);//gets unicode of index 5
+				alert(a);
+				idx=str.indexOf("iss");
+				alert(idx);
+			}
+			function initialize2()
+			{
+				str="Eternal Sunshine of the Spotless Mind";
+				//alert(str.toUpperCase()); Makes uppercase
+				//alert(str.toLowerCase()); Makes Lowercase
+				alert(toCaps(str));
+			}
+			function toCaps(str)
+			{
+			var tmp="";
+			var offset=Math.abs("A".charCodeAt(0)-"a".charCodeAt(0));
+			var lowera="a".charCodeAt(0);
+			var lowerz="z".charCodeAt(0);
+				for(var i=0;i<str.length;i++)
+				{
+					code=str.charCodeAt(i);
+					if(code>= lowera && code<=lowerz)
+					{
+					 code-=offset;
+					 tmp+=String.fromCharCode(code);
+					}
+					else
+					{
+					tmp+=str.charAt(i);
+					}
+				}
+				return tmp;
+			}
+
+		</script> 
+		
+	</head>
+	<body onload="initialize2();">
+	</body>
+
+	
+	
+</html>

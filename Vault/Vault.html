@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+	
+		</style> 
+		<script src = "utilities.js"></script>
+		<script>
+		function initialize()
+		{
+			guessElement=document.getElementById("guess");
+			turnsElement=document.getElementById("turns");
+			vaultcode=[];
+			turnctr=0;
+			for(var i=0;i<3;i++)
+			{
+			vaultcodenum=getRandomInteger(1,3);
+			vaultcode.push(vaultcodenum);
+			}
+		}
+		function guesscheck()
+		{
+			if(turnctr ==4)
+			{
+			alert("NO MORE TRIES");
+			return;
+			}
+
+			correctctr=0;
+			turnctr++;
+			turnsElement.innerHTML=turnctr;
+			guessed=guessElement.value;
+			for(var t=0;t<3;t++)
+			{
+				if(guessed[t]==vaultcode[t])
+				{
+					correctctr++;
+				}
+				else
+				{
+					if(guessed[t]<vaultcode[t])
+					{
+						alert("Too Low");
+						return;
+					}
+					else
+					{
+						if(guessed[t]>vaultcode[t])
+						{
+						alert("Too High");
+						return;
+						}
+					}
+				}
+			}
+			if(correctctr==3)
+			{
+			alert("That is Correct");
+			}
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<input id="guess" type="text"/>
+	<button onclick="guesscheck()"> Take a Guess</button>
+	<div>You only get 4 guesses</div>
+	<div id="turns">Turn Counter:0</div>
+	</body>
+
+	
+	
+</html>

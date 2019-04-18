@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html onkeydown="checkKey(event)">
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		img
+		{
+		position:absolute;
+		top:10px;
+		left:10px;
+		}
+		</style> 
+		
+		<script>
+		function Moveable(x,y)
+		{
+			this.xCoord=x;
+			this.yCoord=y;
+			this.move=function(dir)
+			{
+				SPEED=5;
+				if(this.xCoord !=0)
+				{
+					if(dir==LEFT)
+						this.xCoord-=SPEED;
+				}
+				if(dir==RIGHT)
+					this.xCoord+=SPEED;
+				if(this.yCoord !=0)
+				{
+					if(dir==UP)
+						this.yCoord-=SPEED;
+				}
+				if(dir==DOWN)
+					this.yCoord+=SPEED;
+				display();
+			}
+		}
+		function initialize()
+		{
+			LEFT=37,UP=38,RIGHT=39,DOWN=40;
+			cardObject=new Moveable(10,10);
+			cardElement=document.getElementById("card");
+			
+		}
+		function checkKey(e)
+		{
+			key=e.which;
+			cardObject.move(key);
+		}
+		function display()
+		{
+			cardElement.style.left=cardObject.xCoord+"px";
+			cardElement.style.top=cardObject.yCoord+"px";
+		}
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<img id="card"src="images/1-3.png"/>
+	</body>
+
+	
+	
+</html>

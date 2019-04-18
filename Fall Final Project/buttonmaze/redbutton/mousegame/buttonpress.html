@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		body
+		{
+		color:white;
+		background-color:black;
+		}
+		div
+		{
+		text-align:center;
+		}
+		img
+		{
+		height:100px;
+		width:100px;
+		position:static;
+		top:300px;
+		left:100px;
+		}
+		h1
+		{
+		text-align:center;
+		}
+		</style> 
+		
+		<script> 
+		function initialize()
+		{
+		textElement=document.getElementById("text");
+		secElement=document.getElementById("sec");
+		timeElement=document.getElementById("time");
+		linkElement=document.getElementById("link");
+		clickElement=document.getElementById("click");
+		ctr=0;
+		ctr2=0;
+		ctr3=0;
+		ctr4=1;
+		ctr5=0;
+		work= 0;
+		}
+		function clicker()
+		{
+			if(ctr4!=1)
+			{
+			ctr++;
+			textElement.innerHTML=ctr;
+			}
+		}
+		function timestart()
+		{
+			ctr2++;// ctr2 starts timer
+			if(ctr2>1)// once started it resets the timer and the click number
+			{
+			ctr3=0;// resets timer
+			ctr=0;// resets click number
+			textElement.innerHTML="Can you click the button 60 times in 10 seconds?";// sets click number back to original test.
+			secElement.innerHTML=0;// sets seconds to 0
+			clearInterval(work);// stops initial timer at 10;
+			}
+			work=setInterval(timer,1000);// counts each second
+		}
+		function timer()
+		{
+			if(ctr3==10)// if timer is 10 then do this
+			{
+				ctr4=1;// ctr4 is now 1 so no more clicking allowed
+				clearInterval(work);// stops timer
+				work=0;
+				if(ctr>=60)// checks win condition
+				{
+				win();
+				}
+				else
+				{
+				lose();
+				}
+				ctr3=0;// resets timer
+				ctr=0;// resets click count
+				ctr2=0;// resets ctr2 so no timer double click
+				return;
+			}
+			ctr3++;// increases sec display
+			secElement.innerHTML=ctr3;
+			ctr4=0;// allows for clicks to start
+		}
+		function win()
+		{
+			textElement.innerHTML="YOU WON WITH " + ctr + " clicks";
+			linkElement.setAttribute('href',"Finalgame.html");
+			clickElement.innerHTML="CLICK ME TO MOVE ON";
+		}
+		function lose()
+		{
+			textElement.innerHTML="YOU LOST YOU ONLY GOT "+ctr+" clicks";
+		}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	<h1 id="text">
+	Can you click the button 60 times in 10 seconds?
+	</h1>
+	<div>
+	Seconds:
+	<div id ="sec">
+	0
+	</div>
+	</div>
+	<div>
+	<button id="time" onclick="timestart()">START</button>
+	<a id="link">
+	<button id="click" onclick="clicker();">PRESS </button>
+	</a>
+	</div>
+	<div>
+	</div>
+
+	</body>
+
+	
+	
+</html>

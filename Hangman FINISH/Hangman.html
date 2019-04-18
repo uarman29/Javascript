@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title> First HTML </title>
+		<style> 
+		body
+		{
+		text-align:center;
+		}
+		#back
+		{
+		position:fixed;
+		left:0px;
+		top:0px;
+		width:100%;
+		height:100%;
+		z-index:-1;
+		}
+		#puzzletext
+		{
+		color:white;
+		font-size:30pt;
+		}
+		#result
+		{
+		color:white;
+		font-size:50pt;
+		}
+		button
+		{
+		font-size:20pt;
+		}
+		</style> 
+		
+		<script src = "utilities1.js"></script>
+		<script>
+		function initialize()
+		{
+			gallows=1;
+			winctr=0;
+			gallowsimgElement=document.getElementById("gallowimg");
+			answerCheck=document.getElementById("answer");
+			puzzletextElement=document.getElementById("puzzletext");
+			resultElement=document.getElementById("result");
+			str="alligator ant bear bee bird camel cat cheetah chicken chimpanzee cow crocodile deer dog dolphin duck eagle elephant fish fly fox frog giraffe goat goldfish hamster hippopotamus horse kangaroo kitten lion lobster monkey octopus owl panda pig puppy rabbit rat scorpion seal shark sheep snail snake spider squirrel tiger turtle wolf zebra"
+			randompuzzle=str.split(" ");
+			ran=getRandomInteger(0,randompuzzle.length-1);
+			puzzle=randompuzzle[ran];
+			booarray=[];
+			Acode="A".charCodeAt(0);
+			Zcode="Z".charCodeAt(0);
+			var upper=puzzle.toUpperCase();
+			for(var i=0;i<puzzle.length;i++)
+			{
+				lettercode=upper.charCodeAt(i);
+				if(lettercode>=Acode&&lettercode<=Zcode)
+				{
+					booarray.push(false);
+				}
+				else
+				{
+					booarray.push(true);
+				}
+			}
+			makepuzzle();
+		}
+		function guess(letter)
+		{
+			tempID=document.getElementById(letter);
+			if(winctr==0)
+			{
+				if(tempID.style.backgroundColor!="red")
+				{
+					tempID.style.backgroundColor="red";
+					upper=puzzle.toUpperCase();
+					letterfound=false;
+					
+					for(var i=0;i<puzzle.length;i++)
+					{
+						if(upper[i]==letter)
+						{
+							booarray[i]=true;
+							letterfound=true;
+						}
+					}
+					ctr=0;
+					for(var i=0;i<puzzle.length;i++)
+					{
+						if(booarray[i]==true)
+						{
+							ctr++;
+						}
+					}
+					if(letterfound==false)
+					{
+					gallows++;
+					}
+					makepuzzle();
+					if(gallows==7)
+					{
+						winctr=1;
+					}
+					if(ctr==puzzle.length)
+					{
+						winctr=2;
+					}
+					wincheck();
+				}
+			}
+			
+		}
+		function makepuzzle()
+		{
+			gallowsimgElement.src="images/gallows"+gallows+".png";
+			text="";
+			for(var i=0;i<puzzle.length;i++)
+			{
+				if(booarray[i]==false)
+				{
+					text+="-";
+				}
+				else
+				{
+					text+=puzzle[i];
+				}
+			}
+			puzzletextElement.innerHTML=text;
+		}
+		function wincheck()
+		{
+			if(winctr==1)
+			{
+			resultElement.innerHTML="YOU LOSE";
+			puzzletextElement.innerHTML=puzzle;
+			puzzletextElement.innerHTML.style.color="red";
+			}
+			if(winctr==2)
+			{
+			resultElement.innerHTML="YOU WIN";
+			}
+		}
+		function check()
+		{
+			ans=answer.value.toUpperCase();
+			if(ans=upper)
+			{
+				puzzletextElement.innerHTML=puzzle;
+				winctr=2;
+				wincheck();
+			}
+		}
+		
+		</script> 
+		
+	</head>
+	<body onload ="initialize();">
+	<input id="answer" type="text"><button onclick="check();">Guess</button>
+	<img id="back"src="images/hangman background.jpg"/>
+	<div id="result"></div>
+	<img id="gallowimg"src="images/gallows1.png">
+	<div id="puzzletext">-----</div>
+	<div>
+	<button id="A"onclick="guess('A')">A</button>
+	<button id="B"onclick="guess('B')">B</button>
+	<button id="C"onclick="guess('C')">C</button>
+	<button id="D"onclick="guess('D')">D</button>
+	<button id="E"onclick="guess('E')">E</button>
+	<button id="F"onclick="guess('F')">F</button>
+	<button id="G"onclick="guess('G')">G</button>
+	<button id="H"onclick="guess('H')">H</button>
+	<button id="I"onclick="guess('I')">I</button>
+	<button id="J"onclick="guess('J')">J</button>
+	<button id="K"onclick="guess('K')">K</button>
+	<button id="L"onclick="guess('L')">L</button>
+	<button id="M"onclick="guess('M')">M</button>
+	<button id="N"onclick="guess('N')">N</button>
+	<button id="O"onclick="guess('O')">O</button>
+	<button id="P"onclick="guess('P')">P</button>
+	<button id="Q"onclick="guess('Q')">Q</button>
+	<button id="R"onclick="guess('R')">R</button>
+	<button id="S"onclick="guess('S')">S</button>
+	<button id="T"onclick="guess('T')">T</button>
+	<button id="U"onclick="guess('U')">U</button>
+	<button id="V"onclick="guess('V')">V</button>
+	<button id="W"onclick="guess('W')">W</button>
+	<button id="X"onclick="guess('X')">X</button>
+	<button id="Y"onclick="guess('Y')">Y</button>
+	<button id="Z"onclick="guess('Z')">Z</button>
+	</div>
+	
+	</body>
+
+	
+	
+</html>

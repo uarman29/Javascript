@@ -1,0 +1,28 @@
+body
+{
+	text-align: center;
+	background-image: url("imgs/bg.png");
+	background-size: 100%;
+}
+table
+{
+	border: solid red 1px;
+	margin: 0px auto;
+}
+
+img
+{
+	margin: -3px -1px;
+}
+
+button
+{
+	margin-top: 5px;
+	font-size: 20px;
+}
+
+#header
+{
+	font-size: 35px;
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<!-- ARMAN UDDIN -->
+<html>
+	<head> 
+		<title>Array Functions</title>
+		<style> 
+			html
+			{
+				font:bold 24pt calibri;
+			}
+		</style> 
+		<script> 
+			function initialize()
+			{
+			magic=["zero","one","two","three","four"];
+			magic.push("five");//adds to end of array
+			magic.pop();// deletes last of array+ returns delted value
+			magic.unshift("negative one");//adds to begginning of array
+			magic.shift();
+			color=["blue","red","green","yellow","brown","orange","red","yellow","cyan","green","magenta","blue","red","red","brown"];
+			cnd=color.indexOf("red");
+			temp=0;
+			ctr=0;
+				while(ctr<color.length)
+				{
+					if(color[ctr]=="red")
+					{
+					color.splice(ctr,1);
+					ctr--;
+					}
+					ctr++
+				}
+				alert(color);
+			}
+		</script> 
+		
+	</head>
+	<body onload="initialize();">
+	</body>
+
+	
+	
+</html>
